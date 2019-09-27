@@ -1,0 +1,12 @@
+1562652600773	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Firefox Developer Edition\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rust_mozprofile.7Yp8wPj257YZ"
+1562652601470	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1562652601470	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1562652601471	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1562652601471	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 60: Error: Can't find profile directory.
+1562652603849	Marionette	INFO	Listening on port 58702
+1562652603986	Marionette	WARN	TLS certificate errors will be ignored for this session
+1562652656036	Marionette	INFO	Stopped listening on port 58702
+[Child 24644, Chrome_ChildThread] WARNING: pipe error: 109: file z:/task_1562252792/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 341
+[Child 24644, Ch[Child 24908, Chrome_ChildThread] WARNING: pipe error: 109: file z:/task_1562252792/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 341
+[Child 24908, Chromeh

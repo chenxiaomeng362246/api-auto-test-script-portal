@@ -1,0 +1,30 @@
+1562644160579	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Firefox Developer Edition\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rust_mozprofile.oOfL0yO8fnBT"
+1562644161398	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1562644161398	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1562644161398	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1562644161398	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 60: Error: Can't find profile directory.
+1562644163541	Marionette	INFO	Listening on port 64774
+1562644163807	Marionette	WARN	TLS certificate errors will be ignored for this session
+1562644213684	Marionette	INFO	Stopped listening on port 64774
+[Child 20536, Chrome_ChildThread] WARNING: pipe error: 109: file z:/task_1562252792/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 341
+[Child 20536, Chrome_Chil[Child 21560, Chrome_ChildThread] WARNING: pipe error: 109: file z:/task_1562252792/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 341
+[Child 21560, Ch error: 109: file z:/task_1562252792/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 341
+[Child[Child 8740, Chrome_ChildThread] WARNING: pipe error: 109: file z:/task_1562252792/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 341
+[Child 8740, Chroconsole.error: (new Error("Transaction canceled due to a closed connection.", "resource://gre/modules/Sqlite.jsm", 568))
+rror: 109: file z:/task_1562252792/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 341
+[Child 20188, C1562643352065	Marionette	INFO	Stopped listening on port 63409
+ld 20876, Chrome_ChildThread] WARNING: pipe error: 109: file z:/task_1562252792/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 341
+[Child 2087or: 109: file z:/task_1562252792/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 341
+[Child 8060, Chrome_ChildThread] WARNING: pipe error: 109: file z:/task_1562252792/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 341
+[Child 8060 code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+[Child 12556, Chrome_ChildThread] WARNING: pipe error: 109: file z:/task_1562252792/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 341
+[Child 12556, C[Child 14720, Chrome_ChildThread] WARNING: pipe error: 109: file z:/task_1562252792/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 341
+[Child 14720, Chrome_ChildThread] WARNING: pipe error: 109: file z:/task_1562252792/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 341
