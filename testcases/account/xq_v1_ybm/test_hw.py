@@ -877,6 +877,7 @@ class UserTest(unittest.TestCase):
         else:
             pass
 
+    @unittest.skip("1.1版本已经不涉及评分详情总人数的属性sum_people")
     def test_resource_sum_people_01(self):
         '''
        4.2201 [POST]资源详情 总人数评论
@@ -895,17 +896,8 @@ class UserTest(unittest.TestCase):
             i = 0
             if id_items["items"][s]["rating"] > 0:
                 i += 1
-                # print "<p>。。。。。。。。。。{}。。。。。。。。。。。。。。</p>".format(i)
         len_i = len([j["rating"] for j in id_items["items"] if j["rating"] > 0])
-
-        # print "<p>len_ilen_ilen_ilen_i   {}    len_ilen_ilen_ilen_i</p>".format(len_i)
-        # print "<p>。。。。。。。。。。{}。。。。。。。。。。。。。。</p>".format(i)
-        # print "<p>。。。。。。。。。。{}。。。。。。。。。。。。。。</p>".format(id_items["items"][0]["rating"])
-        # print "<p>！！！！！！！！！！！！！！\n{}\n===============</p>".format(id_items)
-        # 获取sum_people
         response2 = self.lesson_object.get_resourceList_information_none(resourceid, self.lesson_object.userId)
-        # print "<p>----------------------------\n{}\n------------------------------------</p>".format(response2)
-        # 获取所有评论的总数等于评论列表的id  可以直接获取items的长度
         rating = item(response2)
         print "<p>rating============\n{}\n===============</p>".format(rating.get("custom_properties").get("sum_people"))
         print "<p>length============\n{}\n===============</p>".format(len(id_items.get("items")))

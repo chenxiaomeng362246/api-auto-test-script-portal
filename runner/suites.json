@@ -7,7 +7,10 @@
         "cases": {
             "account": [
                 "xq_v1_gis.test_learningstore",
-                "xq_v1_ybm.test_hw"
+                "xq_v1_ybm.test_profile",
+                "xq_v1_ybm.test_hw",
+                "xq_v1_ybm.test_user_manage",
+                "xq_v1_gis.test_learningstore_logout"
             ]
         },
 	"receivers": [300005],
