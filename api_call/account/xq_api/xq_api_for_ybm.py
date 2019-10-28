@@ -7,8 +7,9 @@ import time
 import nd.rest.http_mot as CoHttpM
 from tornado.escape import json_encode
 from api_call.base.http import BaseHttp
-import config.gbl as g
 from api_call.base.txt_opera import TxtOpera
+import testcases.account.xq_glb as glb
+import random
 
 
 class LessonPlan(BaseHttp):
@@ -111,7 +112,7 @@ class LessonPlan(BaseHttp):
     # 资源搜索与排序
     def post_resourceList(self, offset, limit, language, order):
         """
-      1.[POST] /资源搜索与排序[post]
+        1.[POST] /资源搜索与排序[post]
         """
 
         # url = "/learning-store/ndr/resource/list"
@@ -131,8 +132,7 @@ class LessonPlan(BaseHttp):
         res = self.http_obj.post(url, params)
         return res
 
-        # 资源搜索与排序 按平均分排列  大于一颗星，意思每个人评分都大于一颗星
-
+    # 资源搜索与排序 按平均分排列  大于一颗星，意思每个人评分都大于一颗星
     def post_resourceList_rating(self, offset, limit, language, order, rating):
         """
       1.[POST] /资源搜索与排序[post]
@@ -157,15 +157,22 @@ class LessonPlan(BaseHttp):
         return res
 
     # 资源审核
-    def post_resourceList_flag(self, user_id, resource_id, comment, type):
+    def post_resourceList_flag(self, user_id, resource_id, resource_title, comment, type):
         """
-      1.[POST] /资源搜索与排序[post]
+        # 1.[POST] /资源搜索与排序[post]
+        1.[POST]  资源审核  //V0.2.4
         """
         url = "/learning-store/gls/users/" + user_id + "/resources/" + resource_id + "/flag"
-        params = {
+        # params = {
+        #     "comment": comment,
+        #     "type": type}
 
+        # V0.2.4
+        params = {
             "comment": comment,
-            "type": type
+            "type": type,
+            "resourceTitle": resource_title,
+            "resourceUrl": self.get_web_url() + resource_id
         }
         params = json_encode(params)
         self.http_obj.set_header(self.header)
@@ -425,7 +432,6 @@ class LessonPlan(BaseHttp):
         res = self.http_obj.post(url, params)
         return res
 
-
     def post_resource_reviews_01(self, resource_id, userId, userName, rating):
         """
       4.14 [post] /gls/resources/{resource_id}/reviews
@@ -530,7 +536,6 @@ class LessonPlan(BaseHttp):
         res = self.http_obj.post(url, params)
         return res
 
-
     def post_logout_Ls(self, email, password):
         """
       4.1.2 [POST] / usermanagement 登录接口
@@ -579,7 +584,6 @@ class LessonPlan(BaseHttp):
         res = self.http_obj.post(url, params)
         return res
 
-
     def post_resource_reviews_v1_01(self, resource_id, userId, userName):
         """
         改造接口 type=multiple
@@ -591,14 +595,14 @@ class LessonPlan(BaseHttp):
             "userName": userName,
             "avgItems":
                 [{
-					"code":"thinkingSkills",
-					"rating":3
-				}],
-            "content": "tab \n"+str(time.strftime("%Y%m%d%H%M%S", time.localtime())),
+                    "code": "thinkingSkills",
+                    "rating": 3
+                }],
+            "content": "tab \n" + str(time.strftime("%Y%m%d%H%M%S", time.localtime())),
             "sumItems":
                 [{
-               "code": "s1",
-               "rating": 1
+                    "code": "s1",
+                    "rating": 1
                 }]
         }
         params = json.dumps(params)
@@ -617,25 +621,25 @@ class LessonPlan(BaseHttp):
             "userName": userName,
             "avgItems":
                 [{
-					"code":"easyToUseAndUnderstand",
-					"rating":3
-				},
-				{
-					"code":"appropriate",
-					"rating":4
-				},
-				{
-					"code":"studentResponsivenes",
-					"rating":4
-				},
-				{
-					"code":"multipleIntelligences",
-					"rating":5
-				},
-                {
+                    "code": "easyToUseAndUnderstand",
+                    "rating": 3
+                },
+                    {
+                        "code": "appropriate",
+                        "rating": 4
+                    },
+                    {
+                        "code": "studentResponsivenes",
+                        "rating": 4
+                    },
+                    {
+                        "code": "multipleIntelligences",
+                        "rating": 5
+                    },
+                    {
                         "code": "thinkingSkills",
                         "rating": 3
-                 }
+                    }
                 ],
             "content": "tab \n" + str(time.strftime("%Y%m%d%H%M%S", time.localtime())),
             "sumItems":
@@ -660,12 +664,12 @@ class LessonPlan(BaseHttp):
             "userName": userName,
             "avgItems":
                 [{
-                       "code": "overall",
-                        "rating": 1
-                    },
+                    "code": "overall",
+                    "rating": 1
+                },
                     {
-                       "code": "easyToUseAndUnderstand",
-                       "rating": 2
+                        "code": "easyToUseAndUnderstand",
+                        "rating": 2
                     },
                     {
                         "code": "appropriate",
@@ -774,6 +778,7 @@ class LessonPlan(BaseHttp):
         self.http_obj.set_header(self.header)
         res = self.http_obj.post(url, params)
         return res
+
     def put_user_review_of_a_resource_v1(self, id, resource_id, rating, userId):
         """
         改造接口 type=multiple
@@ -782,7 +787,8 @@ class LessonPlan(BaseHttp):
         content = "修改评论评价语"
         url = "/learning-store/gls/resources/reviews/" + id + '?type=multiple&resource_id=' + resource_id
         params = {
-            "content": "this is very good resource ,I like it ，thank you for suporting"+ str(time.strftime("%Y%m%d%H%M%S", time.localtime())),
+            "content": "this is very good resource ,I like it ，thank you for suporting" + str(
+                time.strftime("%Y%m%d%H%M%S", time.localtime())),
             "avgItems": [{
                 "code": "easyToUseAndUnderstand",
                 "rating": rating
@@ -804,7 +810,7 @@ class LessonPlan(BaseHttp):
                 "rating": 1
             }],
             "rating": 2
-                  }
+        }
         params = json_encode(params)
         self.http_obj.set_header(self.header)
         res = self.http_obj.put(url, params)
