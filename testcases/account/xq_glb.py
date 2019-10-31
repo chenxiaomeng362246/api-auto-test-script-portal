@@ -27,7 +27,7 @@ message = "用例执行失败"
 # userId = "379563000@qq.com"
 # user_name = "lnz300005@nd.com.cn"
 # password_ds = "1QAZxsw2"
-# USER_NAME = "lianuser"
+USER_NAME = "lianuser"
 
 user_name = "17689406280@sina.cn"
 password_ds = "Jin-111111"
