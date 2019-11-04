@@ -1,6 +1,5 @@
 #  coding=utf-8
 import random
-from api_call.account.xq_api.xq_api_for_ybm import LessonPlan
 import datetime
 import nd.rest.restful as CoRestful
 import time, json
@@ -30,6 +29,9 @@ user_name = "lnz300005@nd.com.cn"
 password_ds = "1QAZxsw2"
 USER_NAME = "lianuser"
 
+ORG_USER_NAME = "chenrj0@sohu.com"
+ORG_PASSWORD = "Jin_111111"
+
 userId_01 = ""
 userId_02 = "asdasdsadsadsadsadsadasdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadsadsads"
 userId_03 = "legenecy@163.com"
@@ -43,7 +45,7 @@ new_collection_02 = "newcolle_02   " + str(time.strftime("%Y%m%d%H%M%S",
                                                          time.localtime())) + "asdasdsadsadsadsadsadasdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadsadsads"
 NEW_COLLECTION_03 = "-_-|||"
 # collection="{}sdfdd".format(random.randint(1,100))
-collection = "sdfdd" + str(time.strftime("%Y%m%d%H%M%S", time.localtime()))
+collection = "Favorite" + str(time.strftime("%Y%m%d%H%M%S", time.localtime()))
 # update_collection="kkfdd{}".format(random.randint(1,100))
 update_collection = "kkfdd{}" + str(time.strftime("%Y%m%d%H%M%S", time.localtime()))
 offset = 0
@@ -88,22 +90,22 @@ type = random.randint(1, 4)
 rating = random.randint(1, 5)
 
 comment_v2 = time.strftime("%Y-%m-%d", time.localtime()) + "测试资源审核" + CoRand.randomwordmulcode(100)
-type_v33 ="1,2,3,4"
+type_v33 = "1,2,3,4"
 
 # type_v2 = list(range(4)+1)
 # print(my_list)
 # print(random.shuffle(my_list))
 # print(my_list)
-#第一步 生成list
-type_v2 = list(range(1,5))
-#第二步  把list转换成无序
-type_v3=random.shuffle(type_v2)
-#第三步 把数组转为字符串
-str3=','
-seq5=[]
+# 第一步 生成list
+type_v2 = list(range(1, 5))
+# 第二步  把list转换成无序
+type_v3 = random.shuffle(type_v2)
+# 第三步 把数组转为字符串
+str3 = ','
+seq5 = []
 for i in range(len(type_v2)):
     seq5.append(str(type_v2[i]))
-type_v4=str3.join(seq5)
+type_v4 = str3.join(seq5)
 
 rating_cl = 2.5
 content = "sdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffd"
@@ -121,4 +123,5 @@ password_new_01 = "1QAZxsw2"
 # password_ds = "Chen123456"
 # =============================地质活动部分====================================
 print(comment)
-print(type)
+print(comment_v2)
+

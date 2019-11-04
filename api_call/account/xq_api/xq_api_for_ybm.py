@@ -7,8 +7,9 @@ import time
 import nd.rest.http_mot as CoHttpM
 from tornado.escape import json_encode
 from api_call.base.http import BaseHttp
-import config.gbl as g
 from api_call.base.txt_opera import TxtOpera
+import testcases.account.xq_glb as glb
+import random
 
 
 class LessonPlan(BaseHttp):
@@ -109,9 +110,9 @@ class LessonPlan(BaseHttp):
         return res
 
     # 资源搜索与排序
-    def post_resourceList(self, offset, limit, language, order):
+    def post_resourceList(self, offset, limit, language, order, keyword=None):
         """
-      1.[POST] /资源搜索与排序[post]
+        1.[POST] /资源搜索与排序[post]
         """
 
         # url = "/learning-store/ndr/resource/list"
@@ -126,13 +127,17 @@ class LessonPlan(BaseHttp):
             "grades": [],
             "subjects": []
         }
+
+        # 按照关键字搜索
+        if keyword:
+            params['keyword'] = keyword
+
         params = json_encode(params)
         self.http_obj.set_header(self.header)
         res = self.http_obj.post(url, params)
         return res
 
-        # 资源搜索与排序 按平均分排列  大于一颗星，意思每个人评分都大于一颗星
-
+    # 资源搜索与排序 按平均分排列  大于一颗星，意思每个人评分都大于一颗星
     def post_resourceList_rating(self, offset, limit, language, order, rating):
         """
       1.[POST] /资源搜索与排序[post]
@@ -157,27 +162,49 @@ class LessonPlan(BaseHttp):
         return res
 
     # 资源审核
-    def post_resourceList_flag(self, user_id, resource_id, comment, type):
+    def post_resourceList_flag(self, user_id, resource_id, resource_title, comment, type):
         """
-      1.[POST] /资源搜索与排序[post]
+        # 1.[POST] /资源搜索与排序[post]
+        1.[POST]  资源审核  //V0.2.4
         """
         url = "/learning-store/gls/users/" + user_id + "/resources/" + resource_id + "/flag"
-        params = {
+        # params = {
+        #     "comment": comment,
+        #     "type": type}
 
+        # V0.2.4
+        type_description = {1: "Inappropriate content",
+                            2: "Copyright infringement",
+                            3: "Resource unavailable or unable to access resource",
+                            4: "Other (please explain with additional information)"}
+        # 处理type获取type_description
+        if isinstance(type, str):
+            type_list = type.split(',')
+            description = list()
+            for i in range(len(type_list)):
+                description.append(type_description[int(type_list[i])])
+            description = ';'.join(description)
+        else:
+            description = type_description[type]
+
+        params = {
             "comment": comment,
-            "type": type
+            "type": type,
+            "resourceTitle": resource_title,
+            "resourceUrl": self.get_web_url() + '/detail/' + resource_id,
+            "typeDescription" : description
         }
         params = json_encode(params)
         self.http_obj.set_header(self.header)
         res = self.http_obj.post(url, params)
         return res
 
-    # 资源审核
-    def get_resourceList_information(self, resource_id, language, user_id):
+    # 资源详情
+    def get_resourceList_information(self, resource_id, user_id):
         """
       1.[POST] Resource Information
         """
-        url = "/learning-store/gls/resources/" + resource_id + "?language=" + language + "&user_id=" + user_id
+        url = "/learning-store/gls/resources/" + resource_id + "?&user_id=" + user_id
         self.http_obj.set_header(self.header)
         res = self.http_obj.get(url)
         return res
@@ -326,13 +353,14 @@ class LessonPlan(BaseHttp):
         res = self.http_obj.delete(url)
         return res
 
-    def get_collectionGroup(self, user_id):
+    def get_collectionGroup(self, user_id, offset=0):
         """
       4.6 [GET] collectionGroup
+
         """
 
         # url = "/learning-store/gls/resource/group/library/"+user_id+"?offset=0&limit=12"
-        url = "/learning-store/gls/users/" + user_id + "/collections/resources/number" + "?offset=0&limit=12"
+        url = "/learning-store/gls/users/" + user_id + "/collections/resources/number?" + str(offset) + "&limit=12"
         self.http_obj.set_header(self.header)
         res = self.http_obj.get(url)
         return res
@@ -424,7 +452,6 @@ class LessonPlan(BaseHttp):
         self.http_obj.set_header(self.header)
         res = self.http_obj.post(url, params)
         return res
-
 
     def post_resource_reviews_01(self, resource_id, userId, userName, rating):
         """
@@ -530,7 +557,6 @@ class LessonPlan(BaseHttp):
         res = self.http_obj.post(url, params)
         return res
 
-
     def post_logout_Ls(self, email, password):
         """
       4.1.2 [POST] / usermanagement 登录接口
@@ -579,7 +605,6 @@ class LessonPlan(BaseHttp):
         res = self.http_obj.post(url, params)
         return res
 
-
     def post_resource_reviews_v1_01(self, resource_id, userId, userName):
         """
         改造接口 type=multiple
@@ -591,14 +616,14 @@ class LessonPlan(BaseHttp):
             "userName": userName,
             "avgItems":
                 [{
-					"code":"thinkingSkills",
-					"rating":3
-				}],
-            "content": "tab \n"+str(time.strftime("%Y%m%d%H%M%S", time.localtime())),
+                    "code": "thinkingSkills",
+                    "rating": 3
+                }],
+            "content": "tab \n" + str(time.strftime("%Y%m%d%H%M%S", time.localtime())),
             "sumItems":
                 [{
-               "code": "s1",
-               "rating": 1
+                    "code": "s1",
+                    "rating": 1
                 }]
         }
         params = json.dumps(params)
@@ -617,25 +642,25 @@ class LessonPlan(BaseHttp):
             "userName": userName,
             "avgItems":
                 [{
-					"code":"easyToUseAndUnderstand",
-					"rating":3
-				},
-				{
-					"code":"appropriate",
-					"rating":4
-				},
-				{
-					"code":"studentResponsivenes",
-					"rating":4
-				},
-				{
-					"code":"multipleIntelligences",
-					"rating":5
-				},
-                {
+                    "code": "easyToUseAndUnderstand",
+                    "rating": 3
+                },
+                    {
+                        "code": "appropriate",
+                        "rating": 4
+                    },
+                    {
+                        "code": "studentResponsivenes",
+                        "rating": 4
+                    },
+                    {
+                        "code": "multipleIntelligences",
+                        "rating": 5
+                    },
+                    {
                         "code": "thinkingSkills",
                         "rating": 3
-                 }
+                    }
                 ],
             "content": "tab \n" + str(time.strftime("%Y%m%d%H%M%S", time.localtime())),
             "sumItems":
@@ -660,12 +685,12 @@ class LessonPlan(BaseHttp):
             "userName": userName,
             "avgItems":
                 [{
-                       "code": "overall",
-                        "rating": 1
-                    },
+                    "code": "overall",
+                    "rating": 1
+                },
                     {
-                       "code": "easyToUseAndUnderstand",
-                       "rating": 2
+                        "code": "easyToUseAndUnderstand",
+                        "rating": 2
                     },
                     {
                         "code": "appropriate",
@@ -774,6 +799,7 @@ class LessonPlan(BaseHttp):
         self.http_obj.set_header(self.header)
         res = self.http_obj.post(url, params)
         return res
+
     def put_user_review_of_a_resource_v1(self, id, resource_id, rating, userId):
         """
         改造接口 type=multiple
@@ -782,7 +808,8 @@ class LessonPlan(BaseHttp):
         content = "修改评论评价语"
         url = "/learning-store/gls/resources/reviews/" + id + '?type=multiple&resource_id=' + resource_id
         params = {
-            "content": "this is very good resource ,I like it ，thank you for suporting"+ str(time.strftime("%Y%m%d%H%M%S", time.localtime())),
+            "content": "this is very good resource ,I like it ，thank you for suporting" + str(
+                time.strftime("%Y%m%d%H%M%S", time.localtime())),
             "avgItems": [{
                 "code": "easyToUseAndUnderstand",
                 "rating": rating
@@ -804,7 +831,7 @@ class LessonPlan(BaseHttp):
                 "rating": 1
             }],
             "rating": 2
-                  }
+        }
         params = json_encode(params)
         self.http_obj.set_header(self.header)
         res = self.http_obj.put(url, params)
@@ -832,10 +859,18 @@ class LessonPlan(BaseHttp):
 
     def get_number_of_rating_v1(self, resource_id):
         """
-        改造接口 type=multiple
-        4.18 [get] /gls/resources/{resource_id}/ratings/number
+            改造接口 type=multiple
+            4.18 [get] /gls/resources/{resource_id}/ratings/number
         """
         url = "/learning-store/gls/resources/" + resource_id + "/ratings/number?type=multiple"
         self.http_obj.set_header(self.header)
+        res = self.http_obj.get(url)
+        return res
+
+    def get_collections_count(self, user_id):
+        """
+            获取收藏夹个数  //[get] /learning-store/gls/users/{user_id}/collections/count
+        """
+        url = '/learning-store/gls/users/' + user_id + '/collections/count'
         res = self.http_obj.get(url)
         return res

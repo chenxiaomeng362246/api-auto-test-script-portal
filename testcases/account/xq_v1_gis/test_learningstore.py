@@ -15,7 +15,9 @@ from api_call.base.txt_opera import TxtOpera
 from data_struct.request_data import RequestData
 # from selenium import webdriver
 from api_call.base.txt_opera import TxtOpera
-import time,json
+import time, json
+from api_call.base.josn_opera import JsonOpera
+
 __author__ = 'Administrator'
 sys.path.insert(0, '..')
 reload(sys)
@@ -29,6 +31,7 @@ class UserTest(unittest.TestCase):
 
     def setUp(self):
         self.lesson_object = gis_api.LessonPlan(ENVIRONMENT)
+        self.jop = JsonOpera()
 
     def tearDown(self):
         # 析构方法 退出登录
@@ -101,14 +104,14 @@ class UserTest(unittest.TestCase):
         cookie = dict(response.get('response_header')).get('set-cookie')
         print "<p>{}</p>".format('=' * 20)
 
-        #正则表达式抽取XSRF-TOKEN=的值 .*? 是懒惰匹配
-        XSRF_TOKEN=re.findall(r"XSRF-TOKEN=(.+?);",cookie)
+        # 正则表达式抽取XSRF-TOKEN=的值 .*? 是懒惰匹配
+        XSRF_TOKEN = re.findall(r"XSRF-TOKEN=(.+?);", cookie)
 
         print "<p>{}</p>".format('=' * 20)
         cookie_1 = re.findall(r"prom:sess=(.+?);", cookie)
-        print "<p>{}</p>".format('-'*20)
+        print "<p>{}</p>".format('-' * 20)
         print "<p>{}</p>".format(cookie)
-        #把数组【】转为字符串
+        # 把数组【】转为字符串
         print "<p>{}</p>".format(''.join(XSRF_TOKEN))
         print "<p>{}</p>".format(''.join(cookie_1))
         # print "<p>{}</p>".format(''.join(cookie_1))
@@ -120,6 +123,7 @@ class UserTest(unittest.TestCase):
         TxtOpera().write_txt_cookies(cookie)
         TxtOpera().write_txt_cookies_p(''.join(cookie_1))
         TxtOpera().write_txt_cookies_x(''.join(XSRF_TOKEN))
+
     # def test_login(self):
     #     txt_o = TxtOpera()
     #     driver = webdriver.Firefox()
@@ -143,6 +147,28 @@ class UserTest(unittest.TestCase):
     #     # print type(cookies)
     #     txt_o.write_txt_cookies(json.dumps(cookies))
     #     driver.quit()
+
+    def test_org_login(self):
+        """
+            1 [POST] //org sso单点登录 level:1,2,4,5
+        """
+        response = self.lesson_object.post_login_Ls(glb.ORG_USER_NAME, glb.ORG_PASSWORD)
+        glb.rest_o.parse_response(response, glb.CODE200, glb.message)
+        time.sleep(5.0)
+        cookie = dict(response.get('response_header')).get('set-cookie')
+
+        # 正则表达式抽取XSRF-TOKEN=的值 .*? 是懒惰匹配
+        org_xsrf_token = re.findall(r"XSRF-TOKEN=(.+?);", cookie)
+        org_tokenId = re.findall(r"prom:sess=(.+?);", cookie)
+
+        # 保存到json
+        org_user_info = dict()
+        org_user_info["org_tokenId"] = ''.join(org_tokenId)
+        org_user_info["org_xsrf_token"] = ''.join(org_xsrf_token)
+
+        self.jop.write_json(org_user_info)
+
+
 
 if __name__ == "__main__":
     unittest.main()
