@@ -108,7 +108,7 @@ class UserTest(unittest.TestCase):
         '''
         response = self.lesson_object.post_login_AddCollection(glb.userId_02, glb.NEW_COLLECTION_03)
         time.sleep(3)
-        data_dec = glb.rest_o.parse_response(response, glb.CODE403, glb.message)
+        data_dec = glb.rest_o.parse_response(response, glb.CODE400, glb.message)
 
     def test_new_collection_existing_name(self):
         '''
@@ -1024,7 +1024,7 @@ class UserTest(unittest.TestCase):
                 resource_id = items[chosen]["id"]
                 print('<p>资源{}</p>'.format(chosen))
                 response = self.lesson_object.post_resource_reviews_v1(resource_id, self.lesson_object.userId,
-                                                                    glb.userName)
+                                                                       glb.userName)
                 if response.get("code") == 400:
                     print "<p>报错400，是因为评分星星是一样的，所以已经存在了，且这个是新增评论的summbit接口，不是edit接口</p>"
                     pass
@@ -1053,7 +1053,7 @@ class UserTest(unittest.TestCase):
                 resource_id = items[chosen]["id"]
                 print('<p>资源{}</p>'.format(chosen))
                 response = self.lesson_object.post_resource_reviews_un(resource_id, self.lesson_object.userId,
-                                                                    glb.userName)
+                                                                       glb.userName)
                 if response.get("code") == 403:
                     print "<p>报错403，没有权限</p>"
                     pass
@@ -1082,7 +1082,7 @@ class UserTest(unittest.TestCase):
                 resource_id = items[9]["id"]
                 print('<p>资源{}</p>'.format(resource_id))
                 response = self.lesson_object.post_resource_reviews_v1_01(resource_id, self.lesson_object.userId,
-                                                                    glb.userName)
+                                                                          glb.userName)
                 if response.get("code") == 400:
                     print "<p>报错400，是因为评分星星是一样的，所以已经存在了，且这个是新增评论的summbit接口，不是edit接口</p>"
                     pass
@@ -1109,7 +1109,7 @@ class UserTest(unittest.TestCase):
                 chosen = random.randint(0, len(items) - 1)
                 resource_id = items[chosen]["id"]
                 response = self.lesson_object.post_resource_reviews_v1_02(resource_id, self.lesson_object.userId,
-                                                                    glb.userName)
+                                                                          glb.userName)
                 if response.get("code") == 400:
                     print "<p>报错400，是因为评分星星是一样的，所以已经存在了，且这个是新增评论的summbit接口，不是edit接口</p>"
                     pass
@@ -1136,7 +1136,7 @@ class UserTest(unittest.TestCase):
                 chosen = random.randint(0, len(items) - 1)
                 resource_id = items[chosen]["id"]
                 response = self.lesson_object.post_resource_reviews_v1_03(resource_id, self.lesson_object.userId,
-                                                                    glb.userName)
+                                                                          glb.userName)
                 print('<p>资源{}</p>'.format(resource_id))
                 if response.get("code") == 400:
                     print "<p>报错400，是因为评分星星是一样的，所以已经存在了，且这个是新增评论的summbit接口，不是edit接口</p>"
@@ -1145,7 +1145,6 @@ class UserTest(unittest.TestCase):
                     data_dec = glb.rest_o.parse_response(response, glb.CODE200, glb.message)
         except ValueError:
             print('<p>资源列表无资源</p>')
-
 
     def test_post_resource_reviews_v1_04(self):
         '''
@@ -1165,7 +1164,7 @@ class UserTest(unittest.TestCase):
                 chosen = random.randint(0, len(items) - 1)
                 resource_id = items[chosen]["id"]
                 response = self.lesson_object.post_resource_reviews_v1_04(resource_id, self.lesson_object.userId,
-                                                                    glb.userName)
+                                                                          glb.userName)
                 print('<p>资源{}</p>'.format(resource_id))
                 if response.get("code") == 400:
                     print "<p>报错400，是因为评分星星是一样的，所以已经存在了，且这个是新增评论的summbit接口，不是edit接口</p>"
@@ -1234,15 +1233,14 @@ class UserTest(unittest.TestCase):
                 id = str(data['id'])
                 rating = random.randint(1, 5)
                 response = self.lesson_object.put_user_review_of_a_resource_v1(id, resourceid, rating,
-                                                                            self.lesson_object.userId)
+                                                                               self.lesson_object.userId)
             else:
                 rating = random.randint(1, 5)
                 response = self.lesson_object.post_resource_reviews_v1(resourceid, self.lesson_object.userId,
-                                                                       glb.USER_NAME, rating)
+                                                                       glb.USER_NAME)
             glb.rest_o.parse_response(response, glb.CODE200, glb.message)
         else:
             print('<p>response code unequal 200 and 400</p>')
-
 
     def test_get_number_of_rating_v1(self):
         '''
@@ -1256,7 +1254,6 @@ class UserTest(unittest.TestCase):
         response = self.lesson_object.get_number_of_rating_v1(resourceid)
         data_dec = glb.rest_o.parse_response(response, glb.CODE200, glb.message)
 
-
     def test_user_review_of_specific_resource_v2(self):
         '''
         改造评论列表排序接口
@@ -1269,91 +1266,14 @@ class UserTest(unittest.TestCase):
         response = self.lesson_object.get_user_review_of_specific_resource_v1(resourceid, glb.offset_01, glb.limit_01)
         data_dec = glb.rest_o.parse_response(response, glb.CODE200, glb.message)
 
+    # 获取收藏夹个数
+    def test_get_collections_count(self):
+        """
+            获取收藏夹个数 [get]
+        """
+        response = self.lesson_object.get_collections_count(self.lesson_object.userId)
+        glb.rest_o.parse_response(response, glb.CODE200, glb.message)
 
-
-    def test_flagAsInappropriate_search_null_v2(self):
-        '''
-              4.12. 针对一个资源进行审核
-        '''
-        print "<p>第一步，获取列表资源的id</p>"
-        offset_ran = random.choice(glb.offset_ran)  # 0
-        response = self.lesson_object.post_resourceList(offset_ran, glb.limit, glb.language, glb.order)
-        data_dec = glb.rest_o.parse_response(response, glb.CODE200, glb.message)
-
-        try:
-            items = data_dec["items"]
-            if len(items) < 1:  # 资源为空,重新请求
-                glb.offset_ran.remove(offset_ran)  # list删除此元素
-                self.test_flagAsInappropriate_search_null()
-            else:
-                chosen = random.randint(0, len(items) - 1)
-                resource_id = items[chosen]["id"]
-
-                print "<p>第二步，对获取到列表资源的id，进行资源标注暴力，非法，广告，安全泄密</p>"
-                response = self.lesson_object.post_resourceList_flag(self.lesson_object.userId, resource_id,
-                                                                     glb.comment_v2,
-                                                                     glb.type_v4)
-                data = item(response)
-                message = "resource report existed!"
-                if response.get('code') == 400 and data.get('message') == message:
-                    glb.rest_o.parse_response(response, glb.CODE400, glb.message)
-                else:
-                    glb.rest_o.parse_response(response, glb.CODE200, glb.message)
-                print "<p>第三步，对获取到列表资源的id，资源标注暴力，非法，广告，安全泄密后，通过查询列表中的资源id查不到</p>"
-                response = self.lesson_object.get_resourceList_information(
-                    resource_id, glb.language, self.lesson_object.userId)
-                # data_dec = glb.rest_o.parse_response(response, glb.CODE200, glb.message)
-                data = item(response)
-                message = "resource has been flagged"
-                if response.get('code') == 404 and data.get('message') == message:  # 此资源被标记
-                    glb.rest_o.parse_response(response, glb.CODE404, glb.message)
-                else:
-                    glb.rest_o.parse_response(response, glb.CODE404, glb.message)
-                # print "<p>第四步，对获取到列表资源的id，资源标注暴力，非法，广告，安全泄密后，通过查询收藏夹中的资源id查不到</p>"
-        except ValueError:
-            print('<p>资源列表无资源</p>')
-
-    def test_flagAsInappropriate_search_null_v3(self):
-        '''
-              4.12. 针对一个资源进行审核
-        '''
-        print "<p>第一步，获取列表资源的id</p>"
-        offset_ran = random.choice(glb.offset_ran)  # 0
-        response = self.lesson_object.post_resourceList(offset_ran, glb.limit, glb.language, glb.order)
-        data_dec = glb.rest_o.parse_response(response, glb.CODE200, glb.message)
-
-        try:
-            items = data_dec["items"]
-            if len(items) < 1:  # 资源为空,重新请求
-                glb.offset_ran.remove(offset_ran)  # list删除此元素
-                self.test_flagAsInappropriate_search_null()
-            else:
-                chosen = random.randint(0, len(items) - 1)
-                resource_id = items[chosen]["id"]
-
-                print "<p>第二步，对获取到列表资源的id，进行资源标注暴力，非法，广告，安全泄密</p>"
-                response = self.lesson_object.post_resourceList_flag(self.lesson_object.userId, resource_id,
-                                                                     glb.comment_v2,
-                                                                     glb.type_v33)
-                data = item(response)
-                message = "resource report existed!"
-                if response.get('code') == 400 and data.get('message') == message:
-                    glb.rest_o.parse_response(response, glb.CODE400, glb.message)
-                else:
-                    glb.rest_o.parse_response(response, glb.CODE200, glb.message)
-                print "<p>第三步，对获取到列表资源的id，资源标注暴力，非法，广告，安全泄密后，通过查询列表中的资源id查不到</p>"
-                response = self.lesson_object.get_resourceList_information(
-                    resource_id, glb.language, self.lesson_object.userId)
-                # data_dec = glb.rest_o.parse_response(response, glb.CODE200, glb.message)
-                data = item(response)
-                message = "resource has been flagged"
-                if response.get('code') == 404 and data.get('message') == message:  # 此资源被标记
-                    glb.rest_o.parse_response(response, glb.CODE404, glb.message)
-                else:
-                    glb.rest_o.parse_response(response, glb.CODE404, glb.message)
-                # print "<p>第四步，对获取到列表资源的id，资源标注暴力，非法，广告，安全泄密后，通过查询收藏夹中的资源id查不到</p>"
-        except ValueError:
-            print('<p>资源列表无资源</p>')
 
 if __name__ == "__main__":
     pass
