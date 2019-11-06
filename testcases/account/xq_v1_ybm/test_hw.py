@@ -177,7 +177,8 @@ class UserTest(unittest.TestCase):
                 collection_id = random.choice(collection_ids)
                 response = self.lesson_object.delete_mylibrary_id(collection_id)
                 glb.rest_o.parse_response(response, glb.CODE200, glb.message)
-                time.sleep(1.0)  # 强制等待1秒
+                time.sleep(1.5)  # 强制等待1.5秒
+                collection_ids.remove(collection_id)  # 剔除已删除收藏夹
         else:
             # 1-5条，随机删除1条
             collection_id = random.choice(collection_ids)
