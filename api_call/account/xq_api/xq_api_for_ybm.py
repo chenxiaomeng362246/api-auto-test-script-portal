@@ -360,7 +360,7 @@ class LessonPlan(BaseHttp):
         """
 
         # url = "/learning-store/gls/resource/group/library/"+user_id+"?offset=0&limit=12"
-        url = "/learning-store/gls/users/" + user_id + "/collections/resources/number?" + str(offset) + "&limit=12"
+        url = "/learning-store/gls/users/" + user_id + "/collections/resources/number?offset=" + str(offset) + "&limit=12"
         self.http_obj.set_header(self.header)
         res = self.http_obj.get(url)
         return res
