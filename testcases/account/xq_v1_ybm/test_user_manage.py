@@ -134,6 +134,7 @@ class UserTest(unittest.TestCase):
          自动化新增用户，测试当出现非法用户的时候是否可以添加成功，假设成功之后能否禁用用户或者激活账号
         level:1,2,4,5
         '''
-        user_name="test122"+random.randrange(0, 101, 2)+"@lnz.com"
+        user_name="test122"+bytes(random.randrange(0, 101, 2))+"@lnz.com"
+        print user_name
         response = self.lesson_object.auto_add_user_info(user_name)
         data_dec = glb.rest_o.parse_response(response, glb.CODE500, glb.message)

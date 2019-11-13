@@ -108,7 +108,7 @@ class UserTest(unittest.TestCase):
         '''
         response = self.lesson_object.post_login_AddCollection(glb.userId_02, glb.NEW_COLLECTION_03)
         time.sleep(3)
-        data_dec = glb.rest_o.parse_response(response, glb.CODE400, glb.message)
+        data_dec = glb.rest_o.parse_response(response, glb.CODE403, glb.message)
 
     def test_new_collection_existing_name(self):
         '''
@@ -1275,13 +1275,13 @@ class UserTest(unittest.TestCase):
         response = self.lesson_object.get_collections_count(self.lesson_object.userId)
         glb.rest_o.parse_response(response, glb.CODE200, glb.message)
 
-    # 获取收藏夹个数
-    def test_get_collections_note(self):
-        """
-            获取收藏夹个数 [get]
-        """
-        response = self.lesson_object.get_collections_note()
-        glb.rest_o.parse_response(response, glb.CODE200, glb.message)
+    # # 获取收藏夹标注
+    # def test_post_collections_note(self):
+    #     """
+    #         获取收藏夹标注 [get]
+    #     """
+    #     response = self.lesson_object.post_collections_note()
+    #     glb.rest_o.parse_response(response, glb.CODE200, glb.message)
 
 
 if __name__ == "__main__":
