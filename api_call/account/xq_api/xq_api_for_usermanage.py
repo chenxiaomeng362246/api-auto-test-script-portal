@@ -228,7 +228,7 @@ class LessonPlan(BaseHttp):
     def auto_add_user_info(self, user_name):
 
         # 　domain_name　eg // "api_test.com"
-        url = '/org-support/graphql'
+        url = '/user-management/graphql'
         param = {
                     "operationName": "checkUserAvailabilityForOrg",
                     "variables": {
