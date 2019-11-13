@@ -3,6 +3,7 @@ import api_call.account.xq_api.xq_api_for_usermanage as ybm_api
 import testcases.account.xq_glb as glb
 import json
 from config.gbl import *
+import random
 
 __author__ = 'Administrator'
 sys.path.insert(0, '..')
@@ -126,4 +127,13 @@ class UserTest(unittest.TestCase):
         level:1,2,4,5
         '''
         response = self.lesson_object.post_no_request_body_query()
+        data_dec = glb.rest_o.parse_response(response, glb.CODE500, glb.message)
+
+    def test_add_user(self):
+        '''
+         自动化新增用户，测试当出现非法用户的时候是否可以添加成功，假设成功之后能否禁用用户或者激活账号
+        level:1,2,4,5
+        '''
+        user_name="test122"+random.randrange(0, 101, 2)+"@lnz.com"
+        response = self.lesson_object.auto_add_user_info(user_name)
         data_dec = glb.rest_o.parse_response(response, glb.CODE500, glb.message)

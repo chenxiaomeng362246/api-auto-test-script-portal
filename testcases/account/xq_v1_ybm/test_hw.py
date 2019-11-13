@@ -1275,6 +1275,14 @@ class UserTest(unittest.TestCase):
         response = self.lesson_object.get_collections_count(self.lesson_object.userId)
         glb.rest_o.parse_response(response, glb.CODE200, glb.message)
 
+    # 获取收藏夹个数
+    def test_get_collections_note(self):
+        """
+            获取收藏夹个数 [get]
+        """
+        response = self.lesson_object.get_collections_note()
+        glb.rest_o.parse_response(response, glb.CODE200, glb.message)
+
 
 if __name__ == "__main__":
     pass

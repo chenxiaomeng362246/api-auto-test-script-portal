@@ -38,8 +38,9 @@ class UserTest(unittest.TestCase):
         for i in orgs_list:  # [{}]  //只循环1次
             if i['prn'] == 'prn:Organization::ApiTest':
                 org_name = i['prn']
-            else:
-                raise ValueError(' Org ApiTest is deleted or is alter')
+                break
+            # else:
+            #     raise ValueError(' Org ApiTest is deleted or is alter')
         return org_name
 
     # 获取email
@@ -129,6 +130,17 @@ class UserTest(unittest.TestCase):
 
             # 重跑删除domain
             self.test_del_domain_info()
+
+    # 自动添加org账号，可以用于开发环境，切换到sandbox 或则 staging   product 可以把这个用例删除掉
+    def test_auto_add_org_name(self):
+        """
+           自动添加org账号
+        """
+        org_name="QA自动化测试testlnz     "+str(random.random())
+        # domain_name="testlnz.com"
+        _message = '获取组织详情失败'
+        response = self.lesson_object.auto_add_domain_info(org_name)
+        glb.rest_o.parse_response(response, glb.CODE200, _message)
 
     # 添加组织管理员
     def test_add_org_admin(self):

@@ -117,12 +117,13 @@
     "cases": {
       "account": [
         "xq_v1_gis.test_learningstore",
-        "xq_v1_ybm.test_wyz"
+        "xq_v1_ybm.test_user_manage",
+        "xq_v1_gis.test_usermanage_err_07"
 
       ]
     },
     "receivers": [
-      940301
+      300005
     ],
     "group": []
   }

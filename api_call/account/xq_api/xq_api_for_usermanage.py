@@ -223,3 +223,22 @@ class LessonPlan(BaseHttp):
         self.http_obj.set_header(self.header)
         res = self.http_obj.post(url, payload)
         return res
+
+
+    def auto_add_user_info(self, user_name):
+
+        # 　domain_name　eg // "api_test.com"
+        url = '/org-support/graphql'
+        param = {
+                    "operationName": "checkUserAvailabilityForOrg",
+                    "variables": {
+                        "userOrgInput": {
+                            "userPrn": "prn:User::"+user_name,
+                            "orgPrn": "prn:Organization::PrometheanWorld"
+                        }
+                    },
+                    "query": "query checkUserAvailabilityForOrg($userOrgInput: UserOrgInput!) {\n  checkUserAvailabilityForOrg(userOrgInput: $userOrgInput)\n}\n"
+                }
+        param = json.dumps(param)
+        res = self.http_obj.post(url, param)
+        return res

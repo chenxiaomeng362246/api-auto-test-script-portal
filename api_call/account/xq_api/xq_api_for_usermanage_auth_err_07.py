@@ -133,6 +133,26 @@ class LessonPlan(BaseHttp):
         res = self.http_obj.post(url, param)
         return res
 
+    # 新建domain
+    def auto_add_domain_info(self, org_name):
+
+        # 　domain_name　eg // "api_test.com"
+        url = '/org-support/graphql'
+        param = {
+                "operationName": "createOrg",
+                "variables": {
+                    "createOrgInput": {
+                        "country": "",
+                        "name": org_name,
+                        "city": "",
+                        "postalCode": ""
+                    }
+                },
+                "query": "mutation createOrg($createOrgInput: CreateOrgInput!) {\n  createOrg(createOrgInput: $createOrgInput) {\n    ...OrgParts\n    __typename\n  }\n}\n\nfragment OrgParts on Organization {\n  prn\n  name\n  description\n  address\n  address2\n  city\n  region\n  postalCode\n  country\n  timezone\n  domains {\n    name\n    userCount\n    __typename\n  }\n  admins {\n    firstName\n    lastName\n    email\n    disabled\n    __typename\n  }\n  createdOn\n  lastUpdatedOn\n  userCount\n  adminCount\n  status\n  __typename\n}\n"
+            }
+        param = json.dumps(param)
+        res = self.http_obj.post(url, param)
+        return res
     # 删除domain
     def del_domain_info(self, org_name, domain_name):
         url = '/org-support/graphql'
