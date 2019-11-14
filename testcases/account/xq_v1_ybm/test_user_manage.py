@@ -137,4 +137,4 @@ class UserTest(unittest.TestCase):
         user_name="test122"+bytes(random.randrange(0, 101, 2))+"@lnz.com"
         print user_name
         response = self.lesson_object.auto_add_user_info(user_name)
-        data_dec = glb.rest_o.parse_response(response, glb.CODE500, glb.message)
+        data_dec = glb.rest_o.parse_response(response, glb.CODE200, glb.message)

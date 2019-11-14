@@ -230,15 +230,16 @@ class LessonPlan(BaseHttp):
         # 　domain_name　eg // "api_test.com"
         url = '/user-management/graphql'
         param = {
-                    "operationName": "checkUserAvailabilityForOrg",
-                    "variables": {
-                        "userOrgInput": {
-                            "userPrn": "prn:User::"+user_name,
-                            "orgPrn": "prn:Organization::PrometheanWorld"
-                        }
-                    },
-                    "query": "query checkUserAvailabilityForOrg($userOrgInput: UserOrgInput!) {\n  checkUserAvailabilityForOrg(userOrgInput: $userOrgInput)\n}\n"
-                }
+                "operationName": "checkUserAvailabilityForOrg",
+                "variables": {
+                    "userOrgInput": {
+                        "userPrn": "prn:User::"+user_name,
+                        "orgPrn": "prn:Organization::PrometheanTest"
+                    }
+                },
+                "query": "query checkUserAvailabilityForOrg($userOrgInput: UserOrgInput!) {\n  checkUserAvailabilityForOrg(userOrgInput: $userOrgInput)\n}\n"
+            }
         param = json.dumps(param)
+        self.http_obj.set_header(self.header)
         res = self.http_obj.post(url, param)
         return res
