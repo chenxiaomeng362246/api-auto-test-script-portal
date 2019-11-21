@@ -139,7 +139,7 @@ class UserTest(unittest.TestCase):
         org_name="QA自动化测试testlnz     "+str(random.random())
         # domain_name="testlnz.com"
         _message = '获取组织详情失败'
-        response = self.lesson_object.auto_add_domain_info(org_name)
+        response = self.lesson_object.auto_add_org_name_info(org_name)
         glb.rest_o.parse_response(response, glb.CODE200, _message)
 
     # 添加组织管理员

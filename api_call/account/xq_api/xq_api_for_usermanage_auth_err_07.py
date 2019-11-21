@@ -133,8 +133,8 @@ class LessonPlan(BaseHttp):
         res = self.http_obj.post(url, param)
         return res
 
-    # 新建domain
-    def auto_add_domain_info(self, org_name):
+    # 新建org name
+    def auto_add_org_name_info(self, org_name):
 
         # 　domain_name　eg // "api_test.com"
         url = '/org-support/graphql'
