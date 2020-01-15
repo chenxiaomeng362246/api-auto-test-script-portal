@@ -47,7 +47,7 @@ Invalid Authorization header in request	Provide a valid value for the Authorizat
         level:1,2,4,5
         '''
         response = self.lesson_object.post_list_query()
-        data_dec = glb.rest_o.parse_response(response, glb.CODE403, glb.message)
+        data_dec = glb.rest_o.parse_response(response, glb.CODE200, glb.message)
 
 
 
