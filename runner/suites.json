@@ -9,7 +9,8 @@
     "cases": {
       "account": [
         "xq_v1_gis.test_learningstore",
-        "xq_v1_ybm.test_profile"
+        "xq_v1_ybm.test_profile",
+        "xq_v1_ybm.test_hw"
       ]
     },
     "receivers": [
