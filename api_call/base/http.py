@@ -4,7 +4,7 @@ import nd.rest.http_mot as CoHttpM
 
 __author__ = 'Administrator'
 
-import rsa
+# import rsa
 from nd.rest.conf.conf import MyCfg
 
 

@@ -10,7 +10,17 @@
       "account": [
         "xq_v1_gis.test_learningstore",
         "xq_v1_ybm.test_profile",
-        "xq_v1_ybm.test_hw"
+        "xq_v1_ybm.test_hw",
+        "xq_v1_ybm.test_user_manage",
+        "xq_v1_gis.test_usermanage_error",
+        "xq_v1_gis.test_usermanage_err_01",
+        "xq_v1_gis.test_usermanage_err_02",
+        "xq_v1_gis.test_usermanage_err_03",
+        "xq_v1_gis.test_usermanage_err_04",
+        "xq_v1_gis.test_usermanage_err_05",
+        "xq_v1_gis.test_usermanage_err_06",
+        "xq_v1_gis.test_orgManagement",
+        "xq_v1_gis.test_learningstore_logout"
       ]
     },
     "receivers": [
@@ -41,18 +51,8 @@
         "xq_v1_gis.test_usermanage_err_05",
         "xq_v1_gis.test_usermanage_err_06",
         "xq_v1_gis.test_orgManagement",
-        "xq_v1_gis.test_learningstore_logout",
-                "xq_v1_ybm.test_hw",
-        "xq_v1_ybm.test_user_manage",
-        "xq_v1_gis.test_usermanage_error",
-        "xq_v1_gis.test_usermanage_err_01",
-        "xq_v1_gis.test_usermanage_err_02",
-        "xq_v1_gis.test_usermanage_err_03",
-        "xq_v1_gis.test_usermanage_err_04",
-        "xq_v1_gis.test_usermanage_err_05",
-        "xq_v1_gis.test_usermanage_err_06",
-        "xq_v1_gis.test_orgManagement",
         "xq_v1_gis.test_learningstore_logout"
+
       ]
     },
     "receivers": [
