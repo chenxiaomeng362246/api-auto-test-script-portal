@@ -88,6 +88,7 @@ keyword_1 = "1111 #"
 keyword_2 = "<p>#"
 keyword_3 = "台独"
 keyword_4 = "语文"
+keyword_5 = "Great Fire of London"
 comment = time.strftime("%Y-%m-%d", time.localtime()) + "测试资源审核" + CoRand.randomword(3)
 type = random.randint(1, 4)
 rating = random.randint(1, 5)

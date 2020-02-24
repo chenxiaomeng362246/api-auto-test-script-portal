@@ -219,6 +219,13 @@ class UserTest(unittest.TestCase):
         response = self.lesson_object.post_resourceList_1(glb.offset, glb.limit, glb.language, glb.order, glb.keyword_2)
         data_dec = glb.rest_o.parse_response(response, glb.CODE200, glb.message)
 
+    def test_resource_search_collection_kw_English(self):
+        '''
+       4.4.021[POST]search 资源 关键字keyword 为英文字母
+        '''
+        response = self.lesson_object.post_resourceList_1(glb.offset, glb.limit, glb.language, glb.order, glb.keyword_4)
+        data_dec = glb.rest_o.parse_response(response, glb.CODE200, glb.message)
+
     def test_resource_search_collection_kw_sensitive(self):
         '''
        4.4.03[POST]search 资源 关键字keyword 为敏感词台独
