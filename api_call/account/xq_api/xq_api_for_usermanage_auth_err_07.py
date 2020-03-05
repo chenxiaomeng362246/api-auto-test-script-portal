@@ -182,8 +182,21 @@ class LessonPlan(BaseHttp):
                 "addAdmins": [admin], # ""
                 "removeAdmins": []
             },
-            "query": "mutation manageAdminsForOrg($prn: String!, $addAdmins: [String]!, $removeAdmins: [String]!) {\n  manageAdminsForOrg(addRemoveAdminsForOrg: {prn: $prn, addAdmins: $addAdmins, removeAdmins: $removeAdmins}) {\n    userRole {\n      isAdd\n      success\n      user\n      rolePrn\n      error\n      __typename\n    }\n    __typename\n  }\n}\n"
+            "query": "mutation manageAdminsForOrg($prn: String!, $addAdmins: [String!], $removeAdmins: [String!]) {\n  manageAdminsForOrg(addRemoveAdminsForOrg: {prn: $prn, addAdmins: $addAdmins, removeAdmins: $removeAdmins}) {\n    userRole {\n      isAdd\n      success\n      user\n      rolePrn\n      error\n      __typename\n    }\n    __typename\n  }\n}\n"
         }
+        # param ={
+        #         "operationName": "manageAdminsForOrg",
+        #         "variables": {
+        #             "prn": "prn:Organization::ApiTest",
+        #             "addAdmins": [],
+        #             "removeAdmins": ["nvzhuanlian@gmail.com", "mailreven@163.com", "tuilly.morita@prometheanworld.com",
+        #                              "michael.kuroda@prometheanproduct.com"]
+        #         },
+        #         "query": "mutation manageAdminsForOrg($prn: String!, $addAdmins: [String!], $removeAdmins: [String!]) {\n  manageAdminsForOrg(addRemoveAdminsForOrg: {prn: $prn, addAdmins: $addAdmins, removeAdmins: $removeAdmins}) {\n    userRole {\n      isAdd\n      success\n      user\n      rolePrn\n      error\n      __typename\n    }\n    __typename\n  }\n}\n"
+        #     }
+
+
+
         param = json.dumps(param)
         res = self.http_obj.post(url, param)
         return res
@@ -198,8 +211,9 @@ class LessonPlan(BaseHttp):
                 "addAdmins": [],
                 "removeAdmins": admins
             },
-            "query": "mutation manageAdminsForOrg($prn: String!, $addAdmins: [String]!, $removeAdmins: [String]!) {\n  manageAdminsForOrg(addRemoveAdminsForOrg: {prn: $prn, addAdmins: $addAdmins, removeAdmins: $removeAdmins}) {\n    userRole {\n      isAdd\n      success\n      user\n      rolePrn\n      error\n      __typename\n    }\n    __typename\n  }\n}\n"
+            "query": "mutation manageAdminsForOrg($prn: String!, $addAdmins: [String!], $removeAdmins: [String!]) {\n  manageAdminsForOrg(addRemoveAdminsForOrg: {prn: $prn, addAdmins: $addAdmins, removeAdmins: $removeAdmins}) {\n    userRole {\n      isAdd\n      success\n      user\n      rolePrn\n      error\n      __typename\n    }\n    __typename\n  }\n}\n"
         }
+
         param = json.dumps(param)
         res = self.http_obj.post(url, param)
         return res
