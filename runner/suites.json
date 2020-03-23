@@ -108,25 +108,23 @@
     ],
     "group": []
   },
-  "test": {
-    "title": "Learning Store服务端接口测试环境_接口监控",
-    "report_file": "report_LS_DEV",
-    "env": "dev",
+  "case_pro_test": {
+    "title": "Resource Library服务端接口生产环境_接口监控",
+    "report_file": "report_RL_PRO",
+    "env": "pro",
     "levels": [
       1
     ],
     "cases": {
       "account": [
-        "xq_v1_gis.test_learningstore",
-        "xq_v1_ybm.test_user_manage",
-        "xq_v1_gis.test_orgManagement"
-
+        "xq_v1_gis.test_resourcelibrary",
+        "xq_v1_ybm.test_rl"
       ]
     },
     "receivers": [
       300005
     ],
-    "group": []
+    "group": [117889919]
   }
 }
 

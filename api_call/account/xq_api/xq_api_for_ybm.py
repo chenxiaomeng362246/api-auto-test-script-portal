@@ -63,11 +63,10 @@ class LessonPlan(BaseHttp):
             }
         else:
             self.header = {
-                "Accept": "application/json",
-                "Content-Type": "application/json",
-                "Qa-Tag": "0",
-                "Authorization": "DEBUG userid=2132756444,realm=oh"
-
+                        "Content-Type": "application/json",
+                        "x-api-key": "8pnnytjzrw7z1l0g2i8f8luvwmyhkjo7wajaiza0",
+                        "Authorization": self.XSRF_TOKEN,
+                      "Cookie": "XSRF-TOKEN=" + self.XSRF_TOKEN + ";prom:sess=" + self.cookies_p
             }
         self.http_obj = CoHttpM.Http(self.get_ybm_host(), self.get_port(), ssl=self.ssl)
         self.userId = self.get_user_info()
