@@ -288,15 +288,15 @@ class UserTest(unittest.TestCase):
         rating = item(response)
         # 不是列表不能用for  键值对用
         for s in rating["items"]:
-            if s.get("custom_properties").get("avg_rating") >= 1 and glb.rating == 1:
+            if round(s.get("custom_properties").get("avg_rating")) >= 1 and glb.rating == 1:
                 pass
-            elif s.get("custom_properties").get("avg_rating") >= 2 and glb.rating == 2:
+            elif round(s.get("custom_properties").get("avg_rating")) >= 2 and glb.rating == 2:
                 pass
-            elif s.get("custom_properties").get("avg_rating") >= 3 and glb.rating == 3:
+            elif round(s.get("custom_properties").get("avg_rating")) >= 3 and glb.rating == 3:
                 pass
-            elif s.get("custom_properties").get("avg_rating") >= 4 and glb.rating == 4:
+            elif round(s.get("custom_properties").get("avg_rating"))>= 4 and glb.rating == 4:
                 pass
-            elif s.get("custom_properties").get("avg_rating") >= 5 and glb.rating == 5:
+            elif round(s.get("custom_properties").get("avg_rating")) >= 5 and glb.rating == 5:
                 pass
             else:
                 raise TypeError('avg_rating错误值{}'.format(s.get("custom_properties").get("avg_rating")))
