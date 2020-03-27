@@ -91,8 +91,8 @@ keyword_4 = "语文"
 keyword_5 = "Great Fire of London"
 comment = time.strftime("%Y-%m-%d", time.localtime()) + "测试资源审核" + CoRand.randomword(3)
 type = random.randint(1, 4)
-rating = random.randint(1, 5)
-
+#rating = random.randint(1, 5)
+rating = 1
 comment_v2 = time.strftime("%Y-%m-%d", time.localtime()) + "测试资源审核" + CoRand.randomwordmulcode(100)
 type_v33 = "1,2,3,4"
 

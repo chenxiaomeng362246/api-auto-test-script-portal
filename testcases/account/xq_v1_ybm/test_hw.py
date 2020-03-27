@@ -288,15 +288,15 @@ class UserTest(unittest.TestCase):
         rating = item(response)
         # 不是列表不能用for  键值对用
         for s in rating["items"]:
-            if round(s.get("custom_properties").get("avg_rating")) >= 1 and glb.rating == 1:
+            if round(s.get("custom_properties").get("avg_rating"),2) >= 1 and glb.rating == 1:
                 pass
-            elif round(s.get("custom_properties").get("avg_rating")) >= 2 and glb.rating == 2:
+            elif round(s.get("custom_properties").get("avg_rating"),2) >= 2 and glb.rating == 2:
                 pass
-            elif round(s.get("custom_properties").get("avg_rating")) >= 3 and glb.rating == 3:
+            elif round(s.get("custom_properties").get("avg_rating"),2) >= 3 and glb.rating == 3:
                 pass
-            elif round(s.get("custom_properties").get("avg_rating"))>= 4 and glb.rating == 4:
+            elif round(s.get("custom_properties").get("avg_rating"),2)>= 4 and glb.rating == 4:
                 pass
-            elif round(s.get("custom_properties").get("avg_rating")) >= 5 and glb.rating == 5:
+            elif round(s.get("custom_properties").get("avg_rating"),2) >= 5 and glb.rating == 5:
                 pass
             else:
                 raise TypeError('avg_rating错误值{}'.format(s.get("custom_properties").get("avg_rating")))
@@ -306,24 +306,6 @@ class UserTest(unittest.TestCase):
         print ("<p>{}</p>".format(rating))
         data_dec = glb.rest_o.parse_response(response, glb.CODE200, glb.message)
 
-    # def test_resource_search_collection_rating_01(self):
-    #     '''
-    #    4.4.00 [POST]search 资源 平均分 排序
-    #     '''
-    #     # 首先获取资源id
-    #     response = self.lesson_object.post_resourceList_rating(glb.offset,glb.limit,glb.language, glb.order,glb.rating)
-    #     # data_dec = glb.rest_o.parse_response(response, glb.CODE200, glb.message)
-    #     rating=response["items"]
-    #     for s in rating:
-    #         if s.get("custom_properties").get("avg_rating")>3:
-    #             pass
-    #         else:
-    #             raise TypeError('avg_rating错误值{}'.format(s.get("custom_properties").get("avg_rating")))
-    #     #         报错  自己定义的错误
-    #     #         失败 ：程序报错
-    #     print "<p>test</p>"
-    #     print ("<p>{}</p>".format(rating))
-    #     data_dec = glb.rest_o.parse_response(response, glb.CODE200, glb.message)
 
     def test_resource_add_collection(self):
         '''
