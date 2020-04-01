@@ -212,6 +212,13 @@ class UserTest(unittest.TestCase):
         response = self.lesson_object.post_resourceList_1(glb.offset, glb.limit, glb.language, glb.order, glb.keyword_1)
         data_dec = glb.rest_o.parse_response(response, glb.CODE200, glb.message)
 
+    def test_resource_search_collection_type_kw_tab(self):
+        '''
+       4.4.01[POST]search 资源 关键字keyword 为字符串中间有空格
+        '''
+        response = self.lesson_object.post_resourceList_2(glb.offset, glb.limit, glb.language, glb.order, glb.keyword_1)
+        data_dec = glb.rest_o.parse_response(response, glb.CODE200, glb.message)
+
     def test_resource_search_collection_kw_html(self):
         '''
        4.4.02[POST]search 资源 关键字keyword 为html格式<p>

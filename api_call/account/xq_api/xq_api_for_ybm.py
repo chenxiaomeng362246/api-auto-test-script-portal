@@ -61,6 +61,17 @@ class LessonPlan(BaseHttp):
                 # "Cookie":self.cookies
                 # "Cookie": my_txt.read_txt_cookies()
             }
+        elif self.env == 'staging':
+            self.header = {
+                "Content-Type": "application/json",
+                "x-api-key": "200vfopedjj7adxw9ei3n94liu880s9o1tvkssg6",
+                "Authorization": self.XSRF_TOKEN,
+                # "XSRF-TOKEN" : self.XSRF_TOKEN,
+                # "credentials": "include"
+                "Cookie": "XSRF-TOKEN=" + self.XSRF_TOKEN + ";prom:sess=" + self.cookies_p
+                # "Cookie":self.cookies
+                # "Cookie": my_txt.read_txt_cookies()
+            }
         else:
             self.header = {
                         "Content-Type": "application/json",
@@ -233,6 +244,29 @@ class LessonPlan(BaseHttp):
             "order": order,  # "Rating desc",
             "keyword": keyword
             # "types": [],
+            # "grades": [],
+            # "subjects": []
+        }
+        params = json_encode(params)
+        self.http_obj.set_header(self.header)
+        res = self.http_obj.post(url, params)
+        return res
+
+    def post_resourceList_2(self, offset, limit, language, order, keyword):
+        """
+      1.[POST] /资源搜索与排序[post]
+        """
+
+        # url = "/learning-store/ndr/resource/list"
+        url = "/learning-store/gls/resources/action/search"
+        params = {
+
+            "offset": offset,
+            "limit": limit,
+            "language": language,  # "en-US"
+            "order": order,  # "Rating desc",
+            "keyword": keyword,
+             "types": ["WeblinkProm"],
             # "grades": [],
             # "subjects": []
         }

@@ -47,6 +47,16 @@ class LessonPlan(BaseHttp):
                 # user Management
                 # "x-api-key": "9df3s1p1asihvujg0rigw3v5rdmpg3olrcwlv2wg"
             }
+        elif self.env == 'staging':
+            self.header = {
+                "Content-Type": "application/json",
+                # MyPromethean
+                "x-api-key": "200vfopedjj7adxw9ei3n94liu880s9o1tvkssg6"
+                # Panel Management
+                # "x-api-key": "ffk2es1wc2q36r91uq79o4ow65qfkaqn8xhl5ml3"
+                # user Management
+                # "x-api-key": "9df3s1p1asihvujg0rigw3v5rdmpg3olrcwlv2wg"
+            }
         else:
             self.header = {
                 "Accept": "application/json",
