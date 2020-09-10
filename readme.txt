@@ -10,4 +10,5 @@ cd到解压后路径,python setup.py install
 3.对应的运行计划地址是
 https://bamboo.prometheanjira.com/browse/RL-LSAD-431
 
-4.启动项目的命令python runner.py case_xq_test1(这个是运行开发环境的用例)  
+4.启动项目的命令python runner.py case_xq_test1(这个是运行开发环境的用例)
+5\
