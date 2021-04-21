@@ -1,6 +1,6 @@
-#!D:\qa_dailyrun\project_monitor\project\pro_200\venv\Scripts\python.exe
-# EASY-INSTALL-ENTRY-SCRIPT: 'setuptools==40.8.0','console_scripts','easy_install'
-__requires__ = 'setuptools==40.8.0'
+#!E:\PycharmProjects\pythonProject1\venv\Scripts\python.exe
+# EASY-INSTALL-ENTRY-SCRIPT: 'setuptools==44.1.1','console_scripts','easy_install'
+__requires__ = 'setuptools==44.1.1'
 import re
 import sys
 from pkg_resources import load_entry_point
@@ -8,5 +8,5 @@ from pkg_resources import load_entry_point
 if __name__ == '__main__':
     sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
     sys.exit(
-        load_entry_point('setuptools==40.8.0', 'console_scripts', 'easy_install')()
+        load_entry_point('setuptools==44.1.1', 'console_scripts', 'easy_install')()
     )

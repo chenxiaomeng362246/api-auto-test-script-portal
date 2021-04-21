@@ -24,7 +24,7 @@
       ]
     },
     "receivers": [
-      940301,310522
+      940301,310522,930926
     ],
     "group": [
       117889919
@@ -56,7 +56,7 @@
       ]
     },
     "receivers": [
-      300005
+      300005,930926
     ],
     "group": []
   },
@@ -76,7 +76,7 @@
       ]
     },
     "receivers": [
-      300005
+      300005,930926
     ],
     "group": []
   },
@@ -104,7 +104,7 @@
       ]
     },
     "receivers": [
-      300005
+      300005,930926
     ],
     "group": []
   },
@@ -122,7 +122,7 @@
       ]
     },
     "receivers": [
-      300005,567123
+      300005,567123,930926
     ],
     "group": []
   },
@@ -140,7 +140,7 @@
       ]
     },
     "receivers": [
-      300005,567123
+      300005,567123,930926
     ],
     "group": [],
     "monitor": 1
@@ -163,6 +163,24 @@
     ],
     "group": [],
      "monitor": 1
+  },
+
+  "jin": {
+    "title": "LearningStore&UserManagement服务端接口测试环境_接口监控",
+    "report_file": "report_LS_UM_DEV",
+    "env": "dev",
+    "levels": [
+      1
+    ],
+    "cases": {
+      "account": [
+        "xq_v1_gis.test_learningstore"
+      ]
+    },
+    "receivers": [
+      930926
+    ],
+    "group": []
   }
 }
 
