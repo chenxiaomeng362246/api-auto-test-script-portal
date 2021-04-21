@@ -1,0 +1,14 @@
+
+[dev]
+coverage
+pallets-sphinx-themes
+pytest
+sphinx
+sphinx-issues
+tox
+
+[termcolor]
+termcolor
+
+[watchdog]
+watchdog
