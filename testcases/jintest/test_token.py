@@ -16,7 +16,7 @@ class JinTest(unittest.TestCase):
         # 析构方法 退出登录
         pass
 
-    def test_case_get_org_details(self):
+    def test_gettoken(self):
         """
             [POST] /获取登录token
         """
