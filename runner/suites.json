@@ -166,15 +166,32 @@
   },
 
   "jin": {
-    "title": "LearningStore&UserManagement服务端接口测试环境_接口监控",
-    "report_file": "report_LS_UM_DEV",
+    "title": "Portal服务端接口测试环境_接口监控",
+    "report_file": "report_jin_DEV",
     "env": "dev",
     "levels": [
       1
     ],
     "cases": {
       "account": [
-        "xq_v1_gis.test_learningstore"
+        "xq_v1_gis.test_learningstore",
+        "xq_v1_gis.test_orgManagement"
+      ]
+    },
+    "receivers": [
+      930926
+    ],
+    "group": []
+  },
+
+  "jin2": {
+    "title": "Portal服务端接口测试环境_接口监控",
+    "report_file": "report_jin_DEV",
+    "env": "dev",
+    "cases": {
+      "jintest": [
+        "test_temp",
+        "test_token"
       ]
     },
     "receivers": [
@@ -183,4 +200,5 @@
     "group": []
   }
 }
+
 
