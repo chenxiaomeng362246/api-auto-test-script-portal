@@ -9,7 +9,7 @@ class JinTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.lesson_object = api_token.JinToken(ENVIRONMENT)
+        cls.lesson_object = api_token.JinToken(DEV)
 
     @classmethod
     def tearDownClass(cls):
