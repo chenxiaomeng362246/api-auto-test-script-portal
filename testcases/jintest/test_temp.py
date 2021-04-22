@@ -9,7 +9,7 @@ class JinTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.lesson_object = jinapi.Jin(ENVIRONMENT)
+        cls.lesson_object = jinapi.Jin(DEV)
 
     @classmethod
     def tearDownClass(cls):
