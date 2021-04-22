@@ -22,4 +22,7 @@ class JinTest(unittest.TestCase):
         """
         err_message = '获取token失败'
         response = self.lesson_object.jin_gettoken()
-        glb.rest_o.parse_response(response, glb.CODE200, err_message)
+        data = glb.rest_o.parse_response(response, glb.CODE200, err_message)
+        idtoken = data['AuthenticationResult']['IdToken']
+        AuthorizationToken = "Bearer " + idtoken
+        print(AuthorizationToken)
