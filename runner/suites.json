@@ -24,7 +24,7 @@
       ]
     },
     "receivers": [
-      940301,310522,930926
+      940301,310522
     ],
     "group": [
       117889919
@@ -185,12 +185,11 @@
   },
 
   "jin2": {
-    "title": "Portal服务端接口测试环境_接口监控",
-    "report_file": "report_jin_DEV",
-    "env": "dev",
+    "title": "Portal服务端接口测试环境_接口监控_JinTest",
+    "report_file": "report_jin_TEST",
+    "env": "sandbox",
     "cases": {
       "jintest": [
-        "test_temp",
         "test_token"
       ]
     },

@@ -2,21 +2,21 @@
 import testcases.account.xq_glb as glb
 from config.gbl import *
 import unittest
-import api_call.jin.get_token as api_token
+import api_call.jin.api_get_token as api_get_token
 
 
 class JinTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.lesson_object = api_token.JinToken(DEV)
+        cls.lesson_object = api_get_token.JinToken(ENVIRONMENT)
 
     @classmethod
     def tearDownClass(cls):
         # 析构方法 退出登录
         pass
 
-    def test_gettoken(self):
+    def test_getToken(self):
         """
             [POST] /获取登录token
         """
@@ -26,3 +26,4 @@ class JinTest(unittest.TestCase):
         idtoken = data['AuthenticationResult']['IdToken']
         AuthorizationToken = "Bearer " + idtoken
         print(AuthorizationToken)
+        return AuthorizationToken

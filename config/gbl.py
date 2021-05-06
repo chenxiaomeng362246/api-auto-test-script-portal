@@ -22,13 +22,18 @@ __author__ = "Administrator"  # 开发
 
 # 开发
 DEV = "dev"
+
 # 测试
 TEST = "test"
 
 # 预生产
 PRE = "sandbox"
-# 生成
+SANDBOX = "sandbox"
+STAGING = "staging"
+
+# 生产
 PRO = "pro"
+PROD = "prod"
 
 
 
