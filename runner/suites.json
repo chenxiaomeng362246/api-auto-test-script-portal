@@ -167,30 +167,12 @@
 
   "jin": {
     "title": "Portal服务端接口测试环境_接口监控",
-    "report_file": "report_jin_DEV",
-    "env": "dev",
-    "levels": [
-      1
-    ],
-    "cases": {
-      "account": [
-        "xq_v1_gis.test_learningstore",
-        "xq_v1_gis.test_orgManagement"
-      ]
-    },
-    "receivers": [
-      930926
-    ],
-    "group": []
-  },
-
-  "jin2": {
-    "title": "Portal服务端接口测试环境_接口监控_JinTest",
-    "report_file": "report_jin_TEST",
+    "report_file": "report_jin",
     "env": "sandbox",
     "cases": {
       "jintest": [
-        "test_token"
+        "test_get_token",
+        "test_temp"
       ]
     },
     "receivers": [

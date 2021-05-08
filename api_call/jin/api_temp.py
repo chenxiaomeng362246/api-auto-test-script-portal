@@ -1,23 +1,52 @@
 # coding=utf-8
 import json
+from config.gbl import *
 import nd.rest.http_mot as CoHttpM
 from api_call.base.http import BaseHttp
+import testcases.jintest.test_get_token as test_token
+from api_call.base.txt_opera import TxtOpera
 
 
-class Jin(BaseHttp):
-    def __init__(self, env='dev'):
-        super(Jin, self).__init__(env=env)
-        tokenid = "Bearer eyJraWQiOiJQeUw0cTdoRlhZYXZrZkhwVE1DZW9aRUZIaU55WENKcWwzZElTUU41TWRBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI0OGUzOThlYy0wNjUyLTRiYjEtOWRmZS02MWU3MjQ5OTA3ZWYiLCJjbGllbnRJZCI6IjZxOWhnb2Q5Mm4ydTBlOThwMDVwMG5vaXA1IiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy1lYXN0LTEuYW1hem9uYXdzLmNvbVwvdXMtZWFzdC0xX3pyVGpnZ3d4VyIsImNvZ25pdG86dXNlcm5hbWUiOiI0OGUzOThlYy0wNjUyLTRiYjEtOWRmZS02MWU3MjQ5OTA3ZWYiLCJnaXZlbl9uYW1lIjoibmQxMTMiLCJhdWQiOiI2cTloZ29kOTJuMnUwZTk4cDA1cDBub2lwNSIsImV2ZW50X2lkIjoiZDljNjNiZGYtOTc3Yi00YTliLWFjMzQtNGUzMmRiZjhjNTIxIiwidG9rZW5fdXNlIjoiaWQiLCJwcm9maWxlX2lkIjoiMTA3YmJhNzQtZWY4Mi00ZGY4LWFhY2MtZDUwNTQ4ZWFhMGI5IiwiYXV0aF90aW1lIjoxNjE5MDkzNjE5LCJleHAiOjE2MTkwOTcyMTksImlhdCI6MTYxOTA5MzYxOSwiZmFtaWx5X25hbWUiOiJjaGVucmoiLCJlbWFpbCI6ImNoZW5yakBuZC5jb20uY24ifQ.QQ5BH6RuxlCx0DDx1JNNiR3dAu0pDMyRiSPHLhKSVxpcfCm1ML1J8E48Qz2ncXQwF-tpI4BYhkz_Gbwp2Luyt9c8ecqunRFrQMfeaYGeHaAOe2Oxa2c4VTWIGgz5yWlbp9WsqZtkcWwfHGHA4a0CdEWdqSbf8klgvog-40L5P-ZG32_0hWdvCOnh_3q5RaQ18LQBwnnZShsiAJd1nD3irLAbV3rNfzi6heMr-jh6lVgQiwGL9tcHy9X95-Ezhix9OyBhnuBK3156qMXcDpdheJ3S_BmnG_prnmoK5oNjEeUXoLvAtZkTj98dsfOAAFi9ylhYtwdUzy7x73FU8glO9g"
-        self.header = {
-            "Content-Type": "application/json;charset=utf-8",
-            "Authorization": tokenid,
-            "x-api-key": "bombp7rgz71fovyquy0yic24cy3tv7v48z6gj1kp"
-        }
+
+class LessonPlan(BaseHttp):
+    def __init__(self, env='env'):
+        super(LessonPlan, self).__init__(env=env)
+        self.tokenId = ''
+        my_txt = TxtOpera()
+        self.tokenId = my_txt.jin_read_txt_authorizationToken()
+
+        if self.env == 'dev':
+            self.header = {
+                "Content-Type": "application/json;charset=utf-8",
+                "Authorization": self.tokenId,
+                "x-api-key": "8k7m8b5d5fe4uainvosm1ph3aaw1kgvgh4toixcx"
+            }
+        elif self.env == 'sandbox':
+            self.header = {
+                "Content-Type": "application/json;charset=utf-8",
+                "Authorization": self.tokenId,
+                "x-api-key": "uvw9493jpylxyzoww77c6pdhzo445mu82b9h03ja"
+            }
+        elif self.env == 'staging':
+            self.header = {
+                "Content-Type": "application/json;charset=utf-8",
+                "Authorization": self.tokenId,
+                "x-api-key": "lvs656pldskhp2b9ryxz00ng4yo8f3rajv4f8kd8"
+            }
+        elif self.env == 'prod':
+            self.header = {
+                "Content-Type": "application/json;charset=utf-8",
+                "Authorization": self.tokenId,
+                "x-api-key": "d8e8wkdumnxcrx74htsfowj9bx5xqy5f1995xq62"
+            }
+
         # 初始化http，设置header
         self.http_obj = CoHttpM.Http(self.get_ybm_host(), self.get_port(), ssl=True)
         self.http_obj.set_header(self.header)
+    # ============================================公共部分========================================
 
-    def jin2_api_get_org_details(self, org_name):
+
+    def api_get_org_details(self, org_name):
         url = '/org-support/graphql'
         body = {
             "operationName": "getOrgDetails",

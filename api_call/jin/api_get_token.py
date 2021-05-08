@@ -4,9 +4,9 @@ import nd.rest.http_mot as CoHttpM
 from api_call.base.http import BaseHttp
 
 
-class JinToken(BaseHttp):
+class LessonPlan(BaseHttp):
     def __init__(self, env='env'):
-        super(JinToken, self).__init__(env=env)
+        super(LessonPlan, self).__init__(env=env)
         if self.env == 'dev':
             self.header = {
                 "Content-Type": "application/json;charset=utf-8",
