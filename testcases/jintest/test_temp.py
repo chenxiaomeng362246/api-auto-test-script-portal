@@ -10,7 +10,7 @@ class JinTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.lesson_object = api_temp.LessonPlan(DEV)
+        cls.lesson_object = api_temp.LessonPlan(SANDBOX)
 
     @classmethod
     def tearDownClass(cls):
@@ -21,8 +21,8 @@ class JinTest(unittest.TestCase):
         """
             [POST]获取某个组织的组织详情
         """
-        org_name = "prn:Organization::ApiTest"
+        org_prn = "prn:Organization::ApiTest"
         # 获取组织详情  //ApiTest
         err_message = '获取组织详情失败'
-        response = self.lesson_object.api_get_org_details(org_name)
+        response = self.lesson_object.api_getOrgDetails(org_prn)
         glb.rest_o.parse_response(response, glb.CODE200, err_message)

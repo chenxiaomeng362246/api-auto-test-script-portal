@@ -32,7 +32,7 @@ class LessonPlan(BaseHttp):
         self.http_obj = CoHttpM.Http(self.get_ybm_host(), self.get_port(), ssl=True)
         self.http_obj.set_header(self.header)
 
-    def jin_gettoken(self):
+    def jin_getToken(self):
         url = '/identity/login'
         if self.env == 'prod':
             body = {

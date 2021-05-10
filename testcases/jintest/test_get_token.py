@@ -10,7 +10,7 @@ class TokenTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.lesson_object = api_get_token.LessonPlan(DEV)
+        cls.lesson_object = api_get_token.LessonPlan(SANDBOX)
 
     @classmethod
     def tearDownClass(cls):
@@ -22,7 +22,7 @@ class TokenTest(unittest.TestCase):
             [POST] /获取登录token
         """
         err_message = '获取token失败'
-        response = self.lesson_object.jin_gettoken()
+        response = self.lesson_object.jin_getToken()
         data = glb.rest_o.parse_response(response, glb.CODE200, err_message)
         idtoken = data['AuthenticationResult']['IdToken']
         AuthorizationToken = "Bearer " + idtoken

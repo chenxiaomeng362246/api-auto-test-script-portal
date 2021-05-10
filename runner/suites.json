@@ -172,7 +172,8 @@
     "cases": {
       "jintest": [
         "test_get_token",
-        "test_temp"
+        "test_temp",
+        "test_panelManagement"
       ]
     },
     "receivers": [
