@@ -21,6 +21,11 @@
         "xq_v1_gis.test_usermanage_err_06",
         "xq_v1_gis.test_orgManagement",
         "xq_v1_gis.test_learningstore_logout"
+      ],
+      "jintest": [
+        "test_get_token",
+        "test_temp",
+        "test_panelManagement"
       ]
     },
     "receivers": [
