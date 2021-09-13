@@ -2,7 +2,7 @@
 import testcases.account.xq_glb as glb
 from config.gbl import *
 import unittest
-import api_call.jin.api_get_token as api_get_token
+import api_call.jin.base.api_get_token as api_get_token
 from api_call.base.txt_opera import TxtOpera
 
 
@@ -10,7 +10,7 @@ class TokenTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.lesson_object = api_get_token.LessonPlan(SANDBOX)
+        cls.lesson_object = api_get_token.LessonPlan(ENVIRONMENT)
 
     @classmethod
     def tearDownClass(cls):
@@ -27,4 +27,4 @@ class TokenTest(unittest.TestCase):
         idtoken = data['AuthenticationResult']['IdToken']
         AuthorizationToken = "Bearer " + idtoken
         print(AuthorizationToken)
-        TxtOpera().jin_write_txt_authorizationToken(AuthorizationToken)
+        TxtOpera().write_txt_authorizationToken(AuthorizationToken)

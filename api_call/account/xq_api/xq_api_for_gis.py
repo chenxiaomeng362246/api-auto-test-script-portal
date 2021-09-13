@@ -10,7 +10,7 @@ from api_call.usermanage.client_params import GraphQLClient1
 
 
 class LessonPlan(BaseHttp):
-    def __init__(self,env='dev'):
+    def __init__(self, env='dev'):
         super(LessonPlan, self).__init__(env=env)
         if self.env == 'dev':
             self.ssl = True
@@ -30,9 +30,9 @@ class LessonPlan(BaseHttp):
                 # "Accept": "application/json",
                 "Content-Type": "application/json",
                 # "Qa-Tag": "0",
-                #MyPromethean
+                # MyPromethean
                 "x-api-key": "lbu4509y4qecawd1sb2dwmur8mom718kn9lxk1cw"
-                #Panel Management
+                # Panel Management
                 # "x-api-key": "bv6d45mobai6lk31l9sw6s9argxn42x0x35j7jlt"
                 # user ManagementA
                 # "x-api-key": "hibkxo48a90bxkeaw22du9w01xnoy64y2itsmgv9"
@@ -88,9 +88,7 @@ class LessonPlan(BaseHttp):
         res = self.http_obj.post(url, params)
         return res
 
-
-
-    def post_loginrefresh_ls(self,RefreshToken,IdToken):
+    def post_loginrefresh_ls(self, RefreshToken, IdToken):
         """
              4.1.2
        """
@@ -103,13 +101,13 @@ class LessonPlan(BaseHttp):
         }
         params = json_encode(params)
         # 认证是idtocken
-        self.header={"Authorization": "Bearer "+IdToken,
-                     "Accept": "application/json",
-                     "Content-Type": "application/json;charset=utf-8",
-                     "Qa-Tag": "0",
-                     # "Authorization": "DEBUG userid=310522,realm=oh",
-                     "x-api-key": "s42d9y1yomrbi87rkewyx6ebqil9zo08gibhttjp"
-                     }
+        self.header = {"Authorization": "Bearer " + IdToken,
+                       "Accept": "application/json",
+                       "Content-Type": "application/json;charset=utf-8",
+                       "Qa-Tag": "0",
+                       # "Authorization": "DEBUG userid=310522,realm=oh",
+                       "x-api-key": "s42d9y1yomrbi87rkewyx6ebqil9zo08gibhttjp"
+                       }
         self.http_obj.set_header(self.header)
         res = self.http_obj.post(url, params)
         return res

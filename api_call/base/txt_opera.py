@@ -98,20 +98,21 @@ class TxtOpera:
 
         except IOError:
             print('')
-
+            
+            
     # 读取AuthorizationToken数据
-    def jin_read_txt_authorizationToken(self):
+    def read_txt_authorizationToken(self):
         try:
-            with open('authorizationToken.txt', 'r') as f:
+            with open('../authorizationToken.txt', 'r') as f:
                 txt = f.read()
                 return txt
         except IOError:
             print('')
 
-    # 写入数据
-    def jin_write_txt_authorizationToken(self, data):
+    # 写入AuthorizationToken数据
+    def write_txt_authorizationToken(self, data):
         try:
-            with open('authorizationToken.txt', 'w') as f:
+            with open('../authorizationToken.txt', 'w') as f:
                 f.write(data)
 
         except IOError:

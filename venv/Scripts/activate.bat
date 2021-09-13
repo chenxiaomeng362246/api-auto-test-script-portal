@@ -1,6 +1,6 @@
 @echo off
 
-set "VIRTUAL_ENV=E:\PycharmProjects\pythonProject1\venv"
+set "VIRTUAL_ENV=E:\PycharmProjects\api-auto-test-script\venv"
 
 if defined _OLD_VIRTUAL_PROMPT (
     set "PROMPT=%_OLD_VIRTUAL_PROMPT%"

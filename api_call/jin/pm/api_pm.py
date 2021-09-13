@@ -41,9 +41,7 @@ class LessonPlan(BaseHttp):
                 "x-auth-organization-id": "d6bcaa82-23c4-53e7-d96b-563703ce543c"
             }
 
-        # 初始化http，设置header
         self.http_obj = CoHttpM.Http(self.get_ybm_host(), self.get_port(), ssl=True)
-        self.http_obj.set_header(self.header)
 
     # ============================================公共部分========================================
 
@@ -61,6 +59,7 @@ class LessonPlan(BaseHttp):
             "query": "mutation movePanelsToSites($updatePanelSiteInputs: [IUpdatePanelSiteInput]) {movePanelsToSites(updatePanelSiteInputs:$updatePanelSiteInputs) {success}}"
         }
         body = json.dumps(body)
+        self.http_obj.set_header(self.header)
         res = self.http_obj.post(url, body)
         return res
 

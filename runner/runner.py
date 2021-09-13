@@ -1,15 +1,15 @@
 # coding=utf-8
 import sys
 import os
-sys.path.insert(0, '..')
-from nd.rest.sla.sla import SendSLA
+sys.path.insert(0, '../../api-auto-test-script')
+# from nd.rest.sla.sla import SendSLA
 from nd.rest.co_test.runner import run
 
 __author__ = 'linzh'
 
 reload(sys)
 
-sys.setdefaultencoding('utf-8')
+sys.setdefaultencoding('utF-8')
 #
 #
 # proid = sys.argv[2]

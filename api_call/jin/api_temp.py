@@ -11,7 +11,7 @@ class LessonPlan(BaseHttp):
         super(LessonPlan, self).__init__(env=env)
         self.tokenId = ''
         my_txt = TxtOpera()
-        self.tokenId = my_txt.jin_read_txt_authorizationToken()
+        self.tokenId = my_txt.read_txt_authorizationToken()
 
         if self.env == 'dev':
             self.header = {

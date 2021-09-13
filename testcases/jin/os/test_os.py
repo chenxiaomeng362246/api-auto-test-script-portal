@@ -2,15 +2,15 @@
 import testcases.account.xq_glb as glb
 from config.gbl import *
 import unittest
-import api_call.jin.api_temp as api_temp
+import api_call.jin.os.api_os as api_os
 
 
 
-class JinTest(unittest.TestCase):
+class OsTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.lesson_object = api_temp.LessonPlan(SANDBOX)
+        cls.lesson_object = api_os.LessonPlan(ENVIRONMENT)
 
     @classmethod
     def tearDownClass(cls):

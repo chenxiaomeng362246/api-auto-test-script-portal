@@ -2,7 +2,7 @@
 import testcases.account.xq_glb as glb
 from config.gbl import *
 import unittest
-import api_call.jin.api_panelManagement as api_panelManagement
+import api_call.jin.pm.api_pm as api_pm
 
 
 
@@ -10,7 +10,7 @@ class PmTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.lesson_object = api_panelManagement.LessonPlan(SANDBOX)
+        cls.lesson_object = api_pm.LessonPlan(ENVIRONMENT)
 
     @classmethod
     def tearDownClass(cls):

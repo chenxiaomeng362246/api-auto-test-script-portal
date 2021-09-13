@@ -22,17 +22,17 @@
         "xq_v1_gis.test_orgManagement",
         "xq_v1_gis.test_learningstore_logout"
       ],
-      "jintest": [
-        "test_get_token",
-        "test_temp",
-        "test_panelManagement"
+      "jin": [
+        "base.test_get_token",
+        "pm.test_pm",
+        "os.test_os"
       ]
     },
     "receivers": [
-      940301,310522
+      310522,930926
     ],
     "group": [
-      117889919
+
     ]
   },
   "case_xq_test2": {
@@ -171,21 +171,28 @@
   },
 
   "jin": {
-    "title": "Portal服务端接口测试环境_接口监控",
-    "report_file": "report_jin",
+    "title": "Portal+ 接口调试",
+    "report_file": "jin-test",
     "env": "sandbox",
+    "levels": [
+      1
+    ],
     "cases": {
-      "jintest": [
-        "test_get_token",
-        "test_temp",
-        "test_panelManagement"
+      "account": [
+      ],
+      "jin": [
+        "base.test_get_token",
+        "pm.test_pm",
+        "os.test_os"
       ]
     },
     "receivers": [
       930926
     ],
-    "group": []
+    "group": [
+    ]
   }
-}
 
+
+}
 

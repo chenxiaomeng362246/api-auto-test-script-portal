@@ -17,25 +17,24 @@ class LessonPlan(BaseHttp):
         self.ssl = True
         self.token = ''
         self.cookies = ''
-        self.XSRF_TOKEN=''
-        self.cookies_x=''
+        self.XSRF_TOKEN = ''
+        self.cookies_x = ''
         self.cookies_p = ''
         # token
         my_txt = TxtOpera()
         self.token = my_txt.read_txt()
-        self.cookies=my_txt.read_txt_cookies()
+        self.cookies = my_txt.read_txt_cookies()
         self.XSRF_TOKEN = my_txt.read_txt_cookies_x()
-        self.cookies_x=my_txt.read_txt_cookies_x()
+        self.cookies_x = my_txt.read_txt_cookies_x()
         self.cookies_p = my_txt.read_txt_cookies_p()
-
 
         if self.env == 'dev':
             self.header = {
                 "Content-Type": "application/json",
                 # MyPromethean
                 "x-api-key": " ",
-                "Authorization":self.XSRF_TOKEN,
-               "Cookie":"XSRF-TOKEN="+self.XSRF_TOKEN+";prom:sess="+self.cookies_p
+                "Authorization": self.XSRF_TOKEN,
+                "Cookie": "XSRF-TOKEN=" + self.XSRF_TOKEN + ";prom:sess=" + self.cookies_p
             }
         elif self.env == 'sandbox':
             self.header = {
@@ -43,26 +42,25 @@ class LessonPlan(BaseHttp):
                 "Content-Type": "application/json",
                 # MyPromethean
                 "x-api-key": "s42d9y1yomrbi87rkewyx6ebqil9zo08gibhttjp",
-                "Authorization":self.XSRF_TOKEN,
-                 "Cookie":"XSRF-TOKEN="+self.XSRF_TOKEN+";prom:sess="+self.cookies_p
-              }
+                "Authorization": self.XSRF_TOKEN,
+                "Cookie": "XSRF-TOKEN=" + self.XSRF_TOKEN + ";prom:sess=" + self.cookies_p
+            }
         else:
             self.header = {
                 "Content-Type": "application/json",
                 "x-api-key": "lbu4509y4qecawd1sb2dwmur8mom718kn9lxk1cw",
                 # Panel Management?
                 # user Management?
-                "Authorization":self.XSRF_TOKEN,
+                "Authorization": self.XSRF_TOKEN,
                 # "XSRF-TOKEN" : self.XSRF_TOKEN,
                 # "credentials": "include"
-                 "Cookie":"XSRF-TOKEN="+self.XSRF_TOKEN+";prom:sess="+self.cookies_p
+                "Cookie": "XSRF-TOKEN=" + self.XSRF_TOKEN + ";prom:sess=" + self.cookies_p
                 # "Cookie":self.cookies
                 # "Cookie": my_txt.read_txt_cookies()
             }
         self.http_obj = CoHttpM.Http(self.get_ybm_host(), self.get_port(), ssl=self.ssl)
 
     # ============================================公共部分========================================
-
 
     def post_list_query(self):
         """
@@ -76,8 +74,6 @@ class LessonPlan(BaseHttp):
         self.http_obj.set_header(self.header)
         res = self.http_obj.post(url, payload)
         return res
-
-
 
     def post_list_query_all_des(self):
         """
@@ -124,7 +120,6 @@ class LessonPlan(BaseHttp):
         self.http_obj.set_header(self.header)
         res = self.http_obj.post(url, payload)
         return res
-
 
     def post_filter_list(self):
         """

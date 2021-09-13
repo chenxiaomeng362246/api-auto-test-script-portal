@@ -1,13 +1,19 @@
-´î½¨»·¾³
+ï»¿åŽŸå§‹ï¼š
+1.è¿è¡Œé¡¹ç›®è¦åœ¨python2.7 ä¸Š
+éœ€è¦å®‰è£…ä¾èµ–åŒ…ndlib-3.3.16 ï¼Œæ”¾åœ¨æ–‡ä»¶å¤¹libä¸Š è¿è¡Œå‘½ä»¤
+cdåˆ°è§£åŽ‹åŽè·¯å¾„,python setup.py install
 
-1.ÔËÐÐÏîÄ¿ÒªÔÚpython2.7 ÉÏ
-ÐèÒª°²×°ÒÀÀµ°ündlib-3.3.16 £¬·ÅÔÚÏîÄ¿ÎÄ¼þ¼ÐlibÉÏ ÔËÐÐÃüÁî
-cdµ½½âÑ¹ºóÂ·¾¶,python setup.py install
+2.pip install rsa
+  pip install ddt
 
-2.pip install  rsa
-  pip install  ddt
+3.å¯¹åº”çš„è¿è¡Œè®¡åˆ’åœ°å€æ˜¯
+https://bamboo.prometheanjira.com/browse/RL-LSAD-431
 
-3.¶ÔÓ¦µÄÔËÐÐ¼Æ»®µØÖ·ÊÇ
-https://bamboo.prometheanjira.com/browse/RL-LSAD
 
-4.Æô¶¯ÏîÄ¿µÄÃüÁîpython runner.py case_xq_test1(Õâ¸öÊÇÔËÐÐ¿ª·¢»·¾³µÄÓÃÀý)
+4.å¯åŠ¨é¡¹ç›®çš„å‘½ä»¤python runner.py case_xq_test1(è¿™ä¸ªæ˜¯è¿è¡Œå¼€å‘çŽ¯å¢ƒçš„ç”¨ä¾‹)
+5ã€ä¿®æ”¹çœ‹çœ‹
+
+
+ä»é‡‘ä¿®æ”¹ï¼š
+1.è¿è¡Œé¡¹ç›®è¦åœ¨python2.7 ä¸Š
+2.ä¿®æ”¹é¡¹ç›®è·¯å¾„ä¸‹çš„venv->lib->orig-prefix.txt å†…å®¹ä¸ºæœ¬ç”µè„‘å®‰è£…çš„python è§£é‡Šå™¨çš„è·¯å¾„
