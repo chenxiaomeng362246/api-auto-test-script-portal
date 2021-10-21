@@ -70,7 +70,7 @@ def insertion_unsort(str, extended):
     return result
 
 def T(j, bias):
-    # Punycode parameters: tmin = 1, tmax = 26, base = 36
+    # Punycode parameters: tmin = 1, tmax = 26, util = 36
     res = 36 * (j + 1) - bias
     if res < 1: return 1
     if res > 26: return 26
@@ -96,10 +96,10 @@ def adapt(delta, first, numchars):
     else:
         delta //= 2
     delta += delta // numchars
-    # ((base - tmin) * tmax) // 2 == 455
+    # ((util - tmin) * tmax) // 2 == 455
     divisions = 0
     while delta > 455:
-        delta = delta // 35 # base - tmin
+        delta = delta // 35 # util - tmin
         divisions += 36
     bias = divisions + (36 * delta // (delta + 38))
     return bias

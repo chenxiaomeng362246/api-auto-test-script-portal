@@ -1,5 +1,5 @@
 """
-Path operations common to more than one OS
+Path operations panelmanagement_login to more than one OS
 Do not use directly.  The OS specific modules import the appropriate
 functions from this module themselves.
 """
@@ -74,7 +74,7 @@ def getctime(filename):
 
 # Return the longest prefix of all list elements.
 def commonprefix(m):
-    "Given a list of pathnames, returns the longest common leading component"
+    "Given a list of pathnames, returns the longest panelmanagement_login leading component"
     if not m: return ''
     s1 = min(m)
     s2 = max(m)

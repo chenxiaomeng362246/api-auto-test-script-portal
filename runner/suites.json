@@ -1,198 +1,47 @@
 {
-  "case_xq_test1": {
-    "title": "LearningStore&UserManagement服务端接口测试环境_接口监控",
-    "report_file": "report_LS_UM_DEV",
+  "case_for_panelmanagement": {
+    "title": "panelmanagement_接口监控",
+    "report_file": "panelmanagement_report",
     "env": "dev",
     "levels": [
       1
     ],
     "cases": {
-      "account": [
-        "xq_v1_gis.test_learningstore",
-        "xq_v1_ybm.test_profile",
-        "xq_v1_ybm.test_hw",
-        "xq_v1_ybm.test_user_manage",
-        "xq_v1_gis.test_usermanage_error",
-        "xq_v1_gis.test_usermanage_err_01",
-        "xq_v1_gis.test_usermanage_err_02",
-        "xq_v1_gis.test_usermanage_err_03",
-        "xq_v1_gis.test_usermanage_err_04",
-        "xq_v1_gis.test_usermanage_err_05",
-        "xq_v1_gis.test_usermanage_err_06",
-        "xq_v1_gis.test_orgManagement",
-        "xq_v1_gis.test_learningstore_logout"
+      "panelmanagement_login": [
+        "test_get_token"
       ],
-      "jin": [
-        "base.test_get_token",
-        "pm.test_pm",
-        "os.test_os"
+      "panelmanagement_activitylog": [
+        "test_panelactivity"
+      ],
+      "panelmanagement_manage_configurations": [
+        "test_get_redeployInfo"
+      ],
+       "panelmanagement_manage_sites": [
+         "test_add_panel_site",
+         "test_movepaneltosites",
+          "test_search_panel_site",
+           "test_update_panel_site",
+          "test_remove_panel_site"
+      ],
+       "panelmanagement_manage_tags": [
+        "test_create_tag",
+         "test_update_tag",
+          "test_delete_tag"
+      ],
+
+
+      "panelmanagement_unenroll": [
+        "test_enroll_panel",
+        "test_unenroll_panel"
       ]
     },
     "receivers": [
-      310522,930926
+      310522,930926,573805
     ],
     "group": [
 
-    ]
-  },
-  "case_xq_test2": {
-    "title": "LearningStore&UserManagement服务端接口sandbox环境_接口监控",
-    "report_file": "report_LS_UM_SANDBOX",
-    "env": "sandbox",
-    "levels": [
-      1
-    ],
-    "cases": {
-      "account": [
-        "xq_v1_gis.test_learningstore",
-        "xq_v1_ybm.test_profile",
-        "xq_v1_ybm.test_hw",
-        "xq_v1_ybm.test_user_manage",
-        "xq_v1_gis.test_usermanage_error",
-        "xq_v1_gis.test_usermanage_err_01",
-        "xq_v1_gis.test_usermanage_err_02",
-        "xq_v1_gis.test_usermanage_err_03",
-        "xq_v1_gis.test_usermanage_err_04",
-        "xq_v1_gis.test_usermanage_err_05",
-        "xq_v1_gis.test_usermanage_err_06",
-        "xq_v1_gis.test_orgManagement",
-        "xq_v1_gis.test_learningstore_logout"
-
-      ]
-    },
-    "receivers": [
-      300005,930926
-    ],
-    "group": []
-  },
-  "case_xq_test3": {
-    "title": "Learning Store服务端接口测试环境_接口监控",
-    "report_file": "report_LS_DEV",
-    "env": "dev",
-    "levels": [
-      1
-    ],
-    "cases": {
-      "account": [
-        "xq_v1_gis.test_learningstore",
-        "xq_v1_ybm.test_profile",
-        "xq_v1_ybm.test_hw",
-        "xq_v1_gis.test_learningstore_logout"
-      ]
-    },
-    "receivers": [
-      300005,930926
-    ],
-    "group": []
-  },
-  "case_xq_test4": {
-    "title": "User Manage服务端接口测试环境_接口监控",
-    "report_file": "report_UM_DEV",
-    "env": "dev",
-    "levels": [
-      1
-    ],
-    "cases": {
-      "account": [
-        "xq_v1_gis.test_learningstore",
-        "xq_v1_ybm.test_profile",
-        "xq_v1_ybm.test_user_manage",
-        "xq_v1_gis.test_usermanage_error",
-        "xq_v1_gis.test_usermanage_err_01",
-        "xq_v1_gis.test_usermanage_err_02",
-        "xq_v1_gis.test_usermanage_err_03",
-        "xq_v1_gis.test_usermanage_err_04",
-        "xq_v1_gis.test_usermanage_err_05",
-        "xq_v1_gis.test_usermanage_err_06",
-        "xq_v1_gis.test_orgManagement",
-        "xq_v1_gis.test_learningstore_logout"
-      ]
-    },
-    "receivers": [
-      300005,930926
-    ],
-    "group": []
-  },
-  "case_pro_test": {
-    "title": "Resource Library服务端接口生产环境_接口监控",
-    "report_file": "report_RL_PRO",
-    "env": "pro",
-    "levels": [
-      1
-    ],
-    "cases": {
-      "account": [
-        "xq_v1_gis.test_resourcelibrary",
-        "xq_v1_ybm.test_rl"
-      ]
-    },
-    "receivers": [
-      300005,567123,930926
-    ],
-    "group": []
-  },
-    "case_sandbox_test": {
-    "title": "Resource Library服务端接口sandbox环境_接口监控",
-    "report_file": "report_RL_Sandbox",
-    "env": "sandbox",
-    "levels": [
-      1
-    ],
-    "cases": {
-      "account": [
-        "xq_v1_gis.test_resourcelibrary",
-        "xq_v1_ybm.test_rl"
-      ]
-    },
-    "receivers": [
-      300005,567123,930926
-    ],
-    "group": [],
-    "monitor": 1
-  },
-   "case_staging_test": {
-    "title": "Resource Library服务端接口staging环境_接口监控",
-    "report_file": "report_RL_Staging",
-    "env": "staging",
-    "levels": [
-      1
-    ],
-    "cases": {
-      "account": [
-        "xq_v1_gis.test_resourcelibrary",
-        "xq_v1_ybm.test_rl"
-      ]
-    },
-    "receivers": [
-      300005,567123,930926
-    ],
-    "group": [],
-     "monitor": 1
-  },
-
-  "jin": {
-    "title": "Portal+ 接口调试",
-    "report_file": "jin-test",
-    "env": "sandbox",
-    "levels": [
-      1
-    ],
-    "cases": {
-      "account": [
-      ],
-      "jin": [
-        "base.test_get_token",
-        "pm.test_pm",
-        "os.test_os"
-      ]
-    },
-    "receivers": [
-      930926
-    ],
-    "group": [
     ]
   }
-
-
 }
+
 

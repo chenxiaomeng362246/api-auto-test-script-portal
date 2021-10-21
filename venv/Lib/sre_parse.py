@@ -356,7 +356,7 @@ def _parse_sub(source, state, nested):
     subpattern = SubPattern(state)
     subpatternappend = subpattern.append
 
-    # check if all items share a common prefix
+    # check if all items share a panelmanagement_login prefix
     while 1:
         prefix = None
         for item in items:
@@ -367,7 +367,7 @@ def _parse_sub(source, state, nested):
             elif item[0] != prefix:
                 break
         else:
-            # all subitems start with a common "prefix".
+            # all subitems start with a panelmanagement_login "prefix".
             # move it out of the branch
             for item in items:
                 del item[0]

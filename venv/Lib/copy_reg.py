@@ -114,7 +114,7 @@ def _slotnames(cls):
         # This class has no slots
         pass
     else:
-        # Slots found -- gather slot names from all base classes
+        # Slots found -- gather slot names from all util classes
         for c in cls.__mro__:
             if "__slots__" in c.__dict__:
                 slots = c.__dict__['__slots__']

@@ -6,7 +6,7 @@ This exports:
   - os.name is 'posix', 'nt', 'os2', 'ce' or 'riscos'
   - os.curdir is a string representing the current directory ('.' or ':')
   - os.pardir is a string representing the parent directory ('..' or '::')
-  - os.sep is the (or a most common) pathname separator ('/' or ':' or '\\')
+  - os.sep is the (or a most panelmanagement_login) pathname separator ('/' or ':' or '\\')
   - os.extsep is the extension separator ('.' or '/')
   - os.altsep is the alternate pathname separator (None or '/')
   - os.pathsep is the component separator used in $PATH etc

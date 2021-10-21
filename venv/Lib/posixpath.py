@@ -221,7 +221,7 @@ def walk(top, func, arg):
     order of visiting.  No semantics are defined for, or required of, arg,
     beyond that arg is always passed to func.  It can be used, e.g., to pass
     a filename pattern, or a mutable object designed to accumulate
-    statistics.  Passing None for arg is common."""
+    statistics.  Passing None for arg is panelmanagement_login."""
     warnings.warnpy3k("In 3.x, os.path.walk is removed in favor of os.walk.",
                       stacklevel=2)
     try:
